@@ -1,3 +1,8 @@
+<?php 
+  include("db.php"); 
+  session_start();  
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,8 +17,8 @@
   
   <form action="" method="post" class="form">
     <div class="inp">
-      <label for="name">Enter your name: </label>
-      <input type="text" name="name" id="name" required />
+      <label for="email">Ingrese su dirección e-mail: </label>
+      <input type="email" name="email" id="email" required />
     </div>
     <div class="inp">
       <label for="type">Tipo de usuario: </label>
@@ -28,8 +33,32 @@
         <label for="password">Contraseña: </label>
         <input type="text" name="password" id="password" required />
       </div>
-      <input type="submit" value="Register!" />
+      <input type="submit" name="submit" value="Registro" />
     </div>
   </form>
 </body>
 </html>
+
+<?php
+  if($_SERVER["REQUEST_METHOD"]=="POST"){
+    $email = filter_input(INPUT_POST, "email");
+    $type = filter_input(INPUT_POST, "type");
+    $password = filter_input(INPUT_POST, "password");
+
+    if(empty($email)){
+      echo "La dirección email es requerida.";
+    }elseif(empty($type)){
+      echo "El tipo de usuario es requerido.";
+    }elseif(empty($password)){
+      echo "La contraseña es requerida.";
+    }else{
+      // Falta q corrobore q no haya un usuario registrado
+      // con ese email ya.
+      $sql = "INSERT INTO usuarios (email, password, tipo) VALUES ('$email', '$password', '$type')";
+      mysqli_query($conn, $sql);
+      header("Location: login.php");
+
+    }
+  }
+  mysqli_close($conn);
+?>

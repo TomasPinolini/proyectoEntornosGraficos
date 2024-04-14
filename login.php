@@ -1,5 +1,6 @@
-<?php
-
+<?php 
+  include("db.php"); 
+  session_start();
 ?>
 
 <!DOCTYPE html>
@@ -24,8 +25,27 @@
       <input type="text" name="password" id="password" required />
     </div>
     <div class="inp">
-      <input type="submit" value="Log in!" />
+      <input type="submit" value="login" />
     </div>
   </form>
 </body>
 </html>
+
+<?php
+  if(isset($_POST["login"])){
+    /* Necesitamos que este if corrobore 
+    que los datos coincidan con algún 
+    usuario de la base.
+    */
+    if(!empty($_POST["email"]) && !empty($_POST["password"])){
+      $_SESSION["email"] = $_POST["email"];
+      $_SESSION["password"] = $_POST["password"];      
+
+      header("Location: home.php");
+    }else{
+      echo "Faltan datos a ingresar.";
+    }
+
+  }
+
+?>
