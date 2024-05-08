@@ -12,7 +12,8 @@
         echo"Nahhh";
     }
     if($conn){
-        echo"Yes";
+        echo"Yes <br>";
+        echo"<br>";
     }
 
 ?>

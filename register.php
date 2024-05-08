@@ -23,7 +23,6 @@
     <div class="inp">
       <label for="type">Tipo de usuario: </label>
       <select name="type" id="type" required>
-        <option value="admin">Administrador</option>
         <option value="dueno">Dueño</option>
         <option value="cliente">Cliente</option>
       </select>
@@ -54,7 +53,7 @@
     }else{
       // Falta q corrobore q no haya un usuario registrado
       // con ese email ya.
-      $sql = "INSERT INTO usuarios (email, password, tipo) VALUES ('$email', '$password', '$type')";
+      $sql = "INSERT INTO usuarios (email, password, tipo_u) VALUES ('$email', '$password', '$type')";
       mysqli_query($conn, $sql);
       header("Location: login.php");
 
