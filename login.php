@@ -15,37 +15,49 @@
 </head>
 <body>
   <button onclick="redirectToRegister()">Register...</button>
-  <form action="" method="get" class="form">
+  <form action="" method="POST" class="form">
     <div class="inp">
       <label for="name">Enter your email: </label>
       <input type="text" name="email" id="email" required />
     </div>
     <div class="inp">
-      <label for="email">Password: </label>
+      <label for="password">Password: </label>
       <input type="text" name="password" id="password" required />
     </div>
     <div class="inp">
-      <input type="submit" value="login" />
+      <input type="submit" value="login" name="login"/>
     </div>
   </form>
 </body>
 </html>
 
 <?php
+  // if(isset($_POST["login"])){
+  //   echo "xxxxxxxxxxxxx";
+  // if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  //   $password= test_input($_POST["password"]);
+  //   $email = test_input($_POST["email"]);
+  // }
+
   if(isset($_POST["login"])){
-    /* Necesitamos que este if corrobore 
-    que los datos coincidan con algún 
-    usuario de la base.
-    */
-    if(!empty($_POST["email"]) && !empty($_POST["password"])){
-      $_SESSION["email"] = $_POST["email"];
-      $_SESSION["password"] = $_POST["password"];      
+    $stmt = $conn->prepare("SELECT * FROM usuarios WHERE email = ? AND password = ?");
+    $stmt->bind_param('ss', $_POST["email"], $_POST["password"]);
+    $stmt->execute();
+
+    $result = $stmt->get_result();
+
+    $user = $result->fetch_assoc();
+
+    if($user){
+      $_SESSION["user_id"] = $user["id"]; 
+      $_SESSION["email"] = $_POST["email"]; 
+      $_SESSION["password"] = $_POST["password"]; 
 
       header("Location: home.php");
-    }else{
-      echo "Faltan datos a ingresar.";
+      exit;
+    } else {
+      echo "Invalid email or password.";
     }
-
   }
 
 ?>
