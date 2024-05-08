@@ -32,15 +32,8 @@
 </html>
 
 <?php
-  // if(isset($_POST["login"])){
-  //   echo "xxxxxxxxxxxxx";
-  // if ($_SERVER["REQUEST_METHOD"] == "POST") {
-  //   $password= test_input($_POST["password"]);
-  //   $email = test_input($_POST["email"]);
-  // }
-
   if(isset($_POST["login"])){
-    $stmt = $conn->prepare("SELECT * FROM usuarios WHERE email = ? AND password = ?");
+    $stmt = $conn->prepare("SELECT * FROM usuarios WHERE nombreUsuario = ? AND claveUsuario = ?");
     $stmt->bind_param('ss', $_POST["email"], $_POST["password"]);
     $stmt->execute();
 
