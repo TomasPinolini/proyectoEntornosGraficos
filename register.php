@@ -53,7 +53,7 @@
     }else{
       // Falta q corrobore q no haya un usuario registrado
       // con ese email ya.
-      $sql = "INSERT INTO usuarios (email, password, tipo_u) VALUES ('$email', '$password', '$type')";
+      $sql = "INSERT INTO usuarios (nombreUsuario, claveUsuario, tipoUsuario) VALUES ('$email', '$password', '$type')";
       mysqli_query($conn, $sql);
       header("Location: login.php");
 
