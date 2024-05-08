@@ -3,7 +3,7 @@
     $db_server = "localhost";
     $db_user = "root";
     $db_pass = "";
-    $db_name = "proyectoEG";
+    $db_name = "proyectoeg";
     $conn = "";
 
     try{
@@ -11,9 +11,8 @@
     }catch(mysqli_sql_exception){
         echo"Nahhh";
     }
-    if($conn){
-        echo"Yes <br>";
-        echo"<br>";
-    }
+    //if($conn){
+        //echo"Yes";
+    //}
 
 ?>
