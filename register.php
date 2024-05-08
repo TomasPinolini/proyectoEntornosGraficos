@@ -23,7 +23,6 @@
     <div class="inp">
       <label for="type">Tipo de usuario: </label>
       <select name="type" id="type" required>
-        <option value="admin">Administrador</option>
         <option value="dueno">Dueño</option>
         <option value="cliente">Cliente</option>
       </select>

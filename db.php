@@ -11,8 +11,8 @@
     }catch(mysqli_sql_exception){
         echo"Nahhh";
     }
-    // if($conn){
-    //     echo"Yes";
-    // }
+    //if($conn){
+        //echo"Yes";
+    //}
 
 ?>
