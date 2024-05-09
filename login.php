@@ -1,6 +1,23 @@
 <?php 
-  include("db.php"); 
-  session_start();
+  // include("db.php"); 
+  // session_start();
+
+  // $sql = "SELECT * FROM usuarios";
+  // $results = mysqli_query($conn, $sql);
+
+  // if (!$results) {
+  //   echo "Error retrieving data: " . mysqli_error($conn);
+  // }
+
+  // while($row = mysqli_fetch_assoc($results)) {
+  //   $id = $row["codUsuario"];  
+  //   $name = $row["nombreUsuario"];
+  //   $pass = $row["claveUsuario"];
+  //   $type = $row["tipoUsuario"];
+  //   echo "<tr><td>$id</td><td>$name</td><td>$pass</td><td>$type</td></tr><br>"; 
+  
+  // }
+
 ?>
 
 <!DOCTYPE html>
@@ -52,9 +69,8 @@
     $result = $stmt->get_result();
 
     $user = $result->fetch_assoc();
-
     if($user){
-      $_SESSION["user_id"] = ["codUsuario"]; 
+      $_SESSION["user_id"] = $user["codUsuario"]; 
       $_SESSION["email"] = $user["nombreUsuario"]; 
       $_SESSION["password"] = $user["claveUsuario"];  
       $_SESSION["tipoUsuario"] = $user["tipoUsuario"];  

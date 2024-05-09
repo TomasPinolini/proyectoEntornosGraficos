@@ -1,7 +1,25 @@
 <?php 
   include("../db.php"); 
   session_start();  
-?>
+
+  $sql = "SELECT * FROM locales WHERE codUsuario = ?";
+  $stmt = mysqli_prepare($conn, $sql);
+  mysqli_stmt_bind_param($stmt, "s", $_SESSION["codUsuario"]);
+  mysqli_stmt_execute($stmt);
+  $result = mysqli_stmt_get_result($stmt);
+
+  $opcion = "";
+
+  while ($row = mysqli_fetch_assoc($result)) {
+    $codLocal = $row["codLocal"];  
+    $nombreLocal = $row["nombreLocal"];  
+    $opcion .= "<option value = '$codLocal'>$nombreLocal</option>";
+    echo $codLocal, $nombreLocal."<br>";
+  }
+  
+  mysqli_free_result($result);
+  mysqli_stmt_close($stmt);
+  ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -49,27 +67,10 @@
     <div class="inp">
       <label for="type">Para que local/es será válida: </label>
       <select name="locales" id="locales" required multiple>
-        <?php
-            $stmt = $conn->prepare("SELECT * FROM locales WHERE codUsuario = ?");
-            $stmt->bind_param('ss', $_SESSION["codUsuario"]);
-            $stmt->execute();
-
-            $result = $stmt->get_result();
-
-            $locales = $result->fetch_assoc();
-
-            $cantLocales = count($locales);
-
-            for($i=0; $i < $cantLocales; $i++){
-                $nombreLocal = $locales[$i].
-            }
-
-        
-        ?>
+        <?php echo $opcion;?>
       </select>
     </div>    
-
-    <div class="inp">
+   <div class="inp">
       <input type="submit" value="login" name="login"/>
     </div>
   </form>
@@ -84,8 +85,15 @@
     }
 
     if (isset($_SESSION["password"])) {
-        echo $_SESSION["password"] . "<br>";
+      echo $_SESSION["password"] . "<br>";
     }
+
+    if (isset($_SESSION["user_id"])) {
+      echo $_SESSION["user_id"] . "<br>";
+    }else{
+      echo "aaaaaaaaaaaaaaaa";
+    }
+
 
     if(isset($_POST["logout"])){
         session_destroy();
