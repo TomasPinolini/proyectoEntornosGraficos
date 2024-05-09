@@ -54,15 +54,15 @@
     $user = $result->fetch_assoc();
 
     if($user){
-      $_SESSION["user_id"] = $user["codUsuario"]; 
-      $_SESSION["email"] = $_POST["nombreUsuario"]; 
-      $_SESSION["password"] = $_POST["claveUsuario"];  
-      $_SESSION["tipoUsuario"] = $_POST["tipoUsuario"];  
-      $_SESSION["catCliente"] = $_POST["categoria_cliente"];  
+      $_SESSION["user_id"] = ["codUsuario"]; 
+      $_SESSION["email"] = $user["nombreUsuario"]; 
+      $_SESSION["password"] = $user["claveUsuario"];  
+      $_SESSION["tipoUsuario"] = $user["tipoUsuario"];  
+      $_SESSION["catCliente"] = $user["categoria_cliente"];  
 
       switch($user["tipoUsuario"]){
         case "administrador":
-          header("Location: MenuAdministrador.php");
+          header("Location: MenuAdmin.php");
           break;
         case "dueno de local":
           header("Location: MenuDueno.php");

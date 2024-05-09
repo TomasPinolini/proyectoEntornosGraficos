@@ -58,6 +58,10 @@
         <a href="menuAdm/aprobar_promos.php">Aprobar Promos</a>
         <a href="menuAdm/novedades.php">Crear Novedades</a>
         <a href="menuAdm/uso_desc.php">Uso Descuentos</a>
+    </div>
+    <div>
+    <button onclick="window.location.href='login.php'">Log in</button>
+    </div>
     <?php
          if (isset($_SESSION["email"])) {
             echo $_SESSION["email"] . "<br>";
@@ -73,9 +77,5 @@
         }
 
     ?>  
-    </div>
-    <div>
-    <button onclick="window.location.href='login.php'">Log in</button>
-    </div>
 </body>
 </html>

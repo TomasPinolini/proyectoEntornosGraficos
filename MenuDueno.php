@@ -55,6 +55,11 @@
         <a href="menuDue/ingresar_promo.php">Ingresar Promo</a>
         <a href="menuDue/gestion_descuentos.php">Gestion Descuentos</a>
         <a href="menuDue/uso_promos.php">Uso Promos</a>
+    </div>
+    <div>
+    <button onclick="window.location.href='login.php'">Log in</button>
+    </div>
+    
     <?php
          if (isset($_SESSION["email"])) {
             echo $_SESSION["email"] . "<br>";
@@ -67,12 +72,8 @@
         if(isset($_POST["logout"])){
             session_destroy();
             header("Location: login.php");
-        }
+        };
 
     ?>  
-    </div>
-    <div>
-    <button onclick="window.location.href='login.php'">Log in</button>
-    </div>
 </body>
 </html>

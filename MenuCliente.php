@@ -53,6 +53,10 @@
     <div class="welcome">Bienvenido Cliente!</div>
     <div class="navbar">
         <a href="menuCli/sistema_ofertas.php">Sistema Ofertas</a>
+    </div>
+    <div>
+    <button onclick="window.location.href='login.php'">Log in</button>
+    </div>
     <?php
          if (isset($_SESSION["email"])) {
             echo $_SESSION["email"] . "<br>";
@@ -68,9 +72,5 @@
         }
 
     ?>  
-    </div>
-    <div>
-    <button onclick="window.location.href='login.php'">Log in</button>
-    </div>
 </body>
 </html>
