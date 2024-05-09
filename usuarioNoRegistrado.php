@@ -8,7 +8,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Menu Cliente</title>
+    <title>Menu Usuario no Registrado</title>
     <style>
         body {
             background-color: #f0f0f0; /* Cambia esto al color que prefieras */
@@ -50,9 +50,9 @@
     </style>
 </head>
 <body>
-    <div class="welcome">Bienvenido Cliente!</div>
+    <div class="welcome">Bienvenido Usuario no Registrado!</div>
     <div class="navbar">
-        <a href="sistema_ofertas.php">Sistema Ofertas</a>
+        <a href="todas_promociones.php">Visualizar todas las promociones</a>
     <?php
          if (isset($_SESSION["email"])) {
             echo $_SESSION["email"] . "<br>";

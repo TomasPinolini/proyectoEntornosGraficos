@@ -11,10 +11,10 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>GESTION OFERTAS</h1>
+    <h1>VISUALIZACION DE TODAS LAS PROMOS UsNoreg</h1>
     <br>
     <div>
-    <button onclick="window.location.href='MenuAdmin.php'">Menu Admin</button>
+    <button onclick="window.location.href='usuarioNoRegistrado.php'">Menu Usuario no Registrado</button>
     </div>
 </body>
 </html>

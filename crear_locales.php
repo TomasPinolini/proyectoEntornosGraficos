@@ -19,8 +19,13 @@
 </body>
 </html>
 <?php
-    echo $_SESSION["email"] . "<br>";
-    echo $_SESSION["password"] . "<br>";
+     if (isset($_SESSION["email"])) {
+        echo $_SESSION["email"] . "<br>";
+    }
+
+    if (isset($_SESSION["password"])) {
+        echo $_SESSION["password"] . "<br>";
+    }
 
     if(isset($_POST["logout"])){
         session_destroy();

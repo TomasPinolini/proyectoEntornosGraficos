@@ -52,15 +52,17 @@
 <body>
     <div class="welcome">Bienvenido Dueño!</div>
     <div class="navbar">
-        <!-- <a href="gestion_ofertas.php">Gestionar Ofertas</a>
-        <a href="crear_locales.php">Crear Locales</a>
-        <a href="aprobar_duenos.php">Aprobar Duenos</a>
-        <a href="aprobar_promos.php">Aprobar Promos</a>
-        <a href="novedades.php">Crear Novedades</a>
-        <a href="uso_desc.php">Uso Descuentos</a> -->
+        <a href="ingresar_promo.php">Ingresar Promo</a>
+        <a href="gestion_descuentos.php">Gestion Descuentos</a>
+        <a href="uso_promos.php">Uso Promos</a>
     <?php
-        echo $_SESSION["email"] . "<br>";
-        echo $_SESSION["password"] . "<br>";
+         if (isset($_SESSION["email"])) {
+            echo $_SESSION["email"] . "<br>";
+        }
+    
+        if (isset($_SESSION["password"])) {
+            echo $_SESSION["password"] . "<br>";
+        }
 
         if(isset($_POST["logout"])){
             session_destroy();
@@ -68,6 +70,9 @@
         }
 
     ?>  
+    </div>
+    <div>
+    <button onclick="window.location.href='login.php'">Log in</button>
     </div>
 </body>
 </html>
