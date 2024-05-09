@@ -24,7 +24,9 @@
       <label for="type">Tipo de usuario: </label>
       <select name="type" id="type" required>
         <option value="dueno">Dueño</option>
-        <option value="cliente">Cliente</option>
+        <option value="cliente1">Cliente Uno</option>
+        <option value="cliente2">Cliente Dos</option>
+        <option value="cliente3">Cliente Tres</option>
       </select>
     </div>
     <div class="inp">
@@ -53,7 +55,14 @@
     }else{
       // Falta q corrobore q no haya un usuario registrado
       // con ese email ya.
-      $sql = "INSERT INTO usuarios (nombreUsuario, claveUsuario, tipoUsuario) VALUES ('$email', '$password', '$type')";
+      if($type == "cliente1" or $type == "cliente2" or $type == "cliente3"){
+        $typeCli = $type;
+        $type = 'cliente';
+      }else{
+        $type = 'dueno de local';
+      }
+      $sql = "INSERT INTO usuarios (nombreUsuario, claveUsuario, tipoUsuario, 
+      categoria_cliente) VALUES ('$email', '$password', '$type', '$typeCli')";
       mysqli_query($conn, $sql);
       header("Location: login.php");
 

@@ -42,11 +42,21 @@
     $user = $result->fetch_assoc();
 
     if($user){
-      $_SESSION["user_id"] = $user["id"]; 
-      $_SESSION["email"] = $_POST["email"]; 
-      $_SESSION["password"] = $_POST["password"]; 
+      $_SESSION["user_id"] = $user["codUsuario"]; 
+      $_SESSION["email"] = $_POST["nombreUsuario"]; 
+      $_SESSION["password"] = $_POST["claveUsuario"];  
 
-      header("Location: home.php");
+      switch($user["tipoUsuario"]){
+        case "administrador":
+          header("Location: MenuAdministrador.php");
+          break;
+        case "dueno de local":
+          header("Location: MenuDueno.php");
+          break;
+        case "cliente":
+          header("Location: MenuCliente.php");
+          break;
+      }
       exit;
     } else {
       echo "Invalid email or password.";

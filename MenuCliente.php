@@ -8,7 +8,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Menu Administrador</title>
+    <title>Menu Cliente</title>
     <style>
         body {
             background-color: #f0f0f0; /* Cambia esto al color que prefieras */
@@ -50,7 +50,7 @@
     </style>
 </head>
 <body>
-    <div class="welcome">Bienvenido Administrador!</div>
+    <div class="welcome">Bienvenido Cliente!</div>
     <div class="navbar">
         <!-- <a href="gestion_ofertas.php">Gestionar Ofertas</a>
         <a href="crear_locales.php">Crear Locales</a>
