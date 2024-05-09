@@ -1,5 +1,5 @@
 <?php 
-  include("db.php"); 
+  include("../db.php"); 
   session_start();  
 ?>
 
@@ -33,7 +33,7 @@
         <input type="submit" value="Subir notificación">
     </form>
     <div>
-    <button onclick="window.location.href='MenuAdmin.php'">Menu Admin</button>
+    <button onclick="window.location.href='../MenuAdmin.php'">Menu Admin</button>
     </div>
 </body>
 </html>

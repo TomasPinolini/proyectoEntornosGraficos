@@ -57,6 +57,8 @@
       $_SESSION["user_id"] = $user["codUsuario"]; 
       $_SESSION["email"] = $_POST["nombreUsuario"]; 
       $_SESSION["password"] = $_POST["claveUsuario"];  
+      $_SESSION["tipoUsuario"] = $_POST["tipoUsuario"];  
+      $_SESSION["catCliente"] = $_POST["categoria_cliente"];  
 
       switch($user["tipoUsuario"]){
         case "administrador":

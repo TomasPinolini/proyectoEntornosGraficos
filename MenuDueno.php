@@ -52,9 +52,9 @@
 <body>
     <div class="welcome">Bienvenido Dueño!</div>
     <div class="navbar">
-        <a href="ingresar_promo.php">Ingresar Promo</a>
-        <a href="gestion_descuentos.php">Gestion Descuentos</a>
-        <a href="uso_promos.php">Uso Promos</a>
+        <a href="menuDue/ingresar_promo.php">Ingresar Promo</a>
+        <a href="menuDue/gestion_descuentos.php">Gestion Descuentos</a>
+        <a href="menuDue/uso_promos.php">Uso Promos</a>
     <?php
          if (isset($_SESSION["email"])) {
             echo $_SESSION["email"] . "<br>";

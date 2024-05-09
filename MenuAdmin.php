@@ -52,12 +52,12 @@
 <body>
     <div class="welcome">Bienvenido Administrador!</div>
     <div class="navbar">
-        <a href="gestion_ofertas.php">Gestionar Ofertas</a>
-        <a href="crear_locales.php">Crear Locales</a>
-        <a href="aprobar_duenos.php">Aprobar Duenos</a>
-        <a href="aprobar_promos.php">Aprobar Promos</a>
-        <a href="novedades.php">Crear Novedades</a>
-        <a href="uso_desc.php">Uso Descuentos</a>
+        <a href="menuAdm/gestion_ofertas.php">Gestionar Ofertas</a>
+        <a href="menuAdm/crear_locales.php">Crear Locales</a>
+        <a href="menuAdm/aprobar_duenos.php">Aprobar Duenos</a>
+        <a href="menuAdm/aprobar_promos.php">Aprobar Promos</a>
+        <a href="menuAdm/novedades.php">Crear Novedades</a>
+        <a href="menuAdm/uso_desc.php">Uso Descuentos</a>
     <?php
          if (isset($_SESSION["email"])) {
             echo $_SESSION["email"] . "<br>";

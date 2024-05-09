@@ -52,7 +52,7 @@
 <body>
     <div class="welcome">Bienvenido Cliente!</div>
     <div class="navbar">
-        <a href="sistema_ofertas.php">Sistema Ofertas</a>
+        <a href="menuCli/sistema_ofertas.php">Sistema Ofertas</a>
     <?php
          if (isset($_SESSION["email"])) {
             echo $_SESSION["email"] . "<br>";

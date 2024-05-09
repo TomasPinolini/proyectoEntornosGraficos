@@ -1,5 +1,5 @@
 <?php 
-  include("db.php"); 
+  include("../db.php"); 
   session_start();  
 ?>
 
@@ -11,10 +11,10 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>GESTION OFERTAS</h1>
+    <h1>USO PROMO</h1>
     <br>
     <div>
-    <button onclick="window.location.href='MenuAdmin.php'">Menu Admin</button>
+    <button onclick="window.location.href='../MenuDueno.php'">Menu Dueno</button>
     </div>
 </body>
 </html>

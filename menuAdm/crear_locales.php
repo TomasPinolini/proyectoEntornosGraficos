@@ -1,5 +1,5 @@
 <?php 
-  include("db.php"); 
+  include("../db.php"); 
   session_start();  
 ?>
 
@@ -14,7 +14,7 @@
     <h1>CREAR LOCALES</h1>
     <br>
     <div>
-    <button onclick="window.location.href='MenuAdmin.php'">Menu Admin</button>
+    <button onclick="window.location.href='../MenuAdmin.php'">Menu Admin</button>
     </div>
 </body>
 </html>
