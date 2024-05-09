@@ -28,6 +28,18 @@
       <input type="submit" value="login" name="login"/>
     </div>
   </form>
+  <div>
+    <button onclick="window.location.href='MenuAdmin.php'">Menu Admin</button>
+  </div>
+  <div>
+    <button onclick="window.location.href='MenuDueno.php'">Menu Dueno</button>
+  </div>
+  <div>
+    <button onclick="window.location.href='MenuCliente.php'">Menu Cliente</button>
+  </div>
+  <div>
+    <button onclick="window.location.href='usuarioNoRegistrado.php'">Usuarios No Registrados</button>
+  </div>
 </body>
 </html>
 
