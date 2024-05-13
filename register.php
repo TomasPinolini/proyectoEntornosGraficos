@@ -24,9 +24,7 @@
       <label for="type">Tipo de usuario: </label>
       <select name="type" id="type" required>
         <option value="dueno">Dueño</option>
-        <option value="cInicial">Cliente Inicial</option>
-        <option value="cMedium">Cliente Medium</option>
-        <option value="cPremium">Cliente Premium</option>
+        <option value="cliente">Cliente</option>
       </select>
     </div>
     <div class="inp">
@@ -54,9 +52,8 @@
   }else{
     // Falta q corrobore q no haya un usuario registrado
     // con ese email ya.
-    if($type == "cInicial" or $type == "cMedium" or $type == "cPremium"){
-      $typeCli = $type;
-      $type = 'cliente';
+    if($type == "cliente"){
+      $typeCli = "Inicial";
     }else{
       $type = 'dueno de local';
     }
@@ -65,5 +62,11 @@
     mysqli_query($conn, $sql);
     header("Location: login.php");
   }
+  if($type == "Cliente"){
+    echo "Cliente";
+  }else{
+    echo "Dueño";
+  }
+
   mysqli_close($conn);
 ?>

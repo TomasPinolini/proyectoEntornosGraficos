@@ -61,17 +61,17 @@
     </div>
     
     <?php
-         if (isset($_SESSION["email"])) {
-            echo $_SESSION["email"] . "<br>";
-        }
+        //  if (isset($_SESSION["email"])) {
+        //     echo $_SESSION["email"] . "<br>";
+        // }
     
-        if (isset($_SESSION["password"])) {
-            echo $_SESSION["password"] . "<br>";
-        }
+        // if (isset($_SESSION["password"])) {
+        //     echo $_SESSION["password"] . "<br>";
+        // }
         
-        if (isset($_SESSION["user_id"])) {
-            echo $_SESSION["user_id"] . "<br>";
-        }
+        // if (isset($_SESSION["user_id"])) {
+        //     echo $_SESSION["user_id"] . "<br>";
+        // }
         
         if(isset($_POST["logout"])){
             session_destroy();

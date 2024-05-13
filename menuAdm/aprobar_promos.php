@@ -12,20 +12,75 @@
 </head>
 <body>
     <h1>APROBAR PROMOS</h1>
-    <br>
+    <form action="" method="post">
+        <table border='1'>
+            <tr>
+                <th>Descripción</th>
+                <th>Desde</th>
+                <th>Hasta</th>
+                <th>Categoría Cliente</th>
+                <th>Días de la Semana</th>
+                <th>Nombre Local</th>
+                <th>Aprobación</th>
+            </tr>    
+
+            <?php
+                $sql = "SELECT * FROM promociones WHERE estadoPromo = 'pendiente'";
+                $data = mysqli_query($conn, $sql);
+                while($promo = mysqli_fetch_array($data)){
+                    $codPromo = $promo["codPromo"];
+                    $desc = $promo["textoPromo"];
+                    $desde = $promo["fechaDesdePromo"];
+                    $hasta = $promo["fechaHastaPromo"];
+                    $cat = $promo["categoria_cliente"];
+                    $dds = implode(", ", json_decode($promo["diasSemana"]));
+
+                    $cod = $promo["codLocal"];
+                    $sqlLocal = mysqli_fetch_array(mysqli_query($conn, "SELECT nombreLocal, codUsuario FROM locales WHERE codLocal = '$cod'"));
+                    $nombreLocal = $sqlLocal["nombreLocal"];
+                    $codDueno = $sqlLocal["codUsuario"];
+                    $sqlDueno = mysqli_fetch_array(mysqli_query($conn, "SELECT nombreUsuario FROM usuarios WHERE codUsuario = '$codDueno'"));
+                    $nombreDueno = $sqlDueno["nombreUsuario"];
+                    
+                    $idSelect = "id_".$codPromo;
+                    $nameSelect = "aprobacion_".$codPromo; 
+                    echo "<tr><td>$desc</td><td>$desde</td><td>$hasta</td><td>$cat</td><td>$dds</td><td>$nombreLocal</td>";
+                    echo "<td><select id='$idSelect' name='$nameSelect'>
+                                <option value='pendiente' selected disabled>Seleccione:</option>
+                                <option value='aprobada'>Aprobar</option>
+                                <option value='denegada'>Denegar</option>
+                              </select></td></tr>";
+                }
+            ?>
+        </table>
+        <input type="submit" value="submit">
+    </form>
     <div>
     <button onclick="window.location.href='../MenuAdmin.php'">Menu Admin</button>
     </div>
 </body>
 </html>
 <?php
-     if (isset($_SESSION["email"])) {
-        echo $_SESSION["email"] . "<br>";
+    if (mysqli_num_rows($data) > 0 and $_SERVER["REQUEST_METHOD"] == "POST") {
+        foreach ($_POST as $key => $value) {
+            $estado = mysqli_real_escape_string($conn, $value);
+            echo $value;
+            $sql = "UPDATE promociones SET estadoPromo = '$estado' WHERE codPromo = '$codPromo'";
+            mysqli_query($conn, $sql);
+        }
     }
 
-    if (isset($_SESSION["password"])) {
-        echo $_SESSION["password"] . "<br>";
-    }
+
+
+    // UPDATE promociones SET estadoPromo = 'pendiente';
+
+    //  if (isset($_SESSION["email"])) {
+    //     echo $_SESSION["email"] . "<br>";
+    // }
+
+    // if (isset($_SESSION["password"])) {
+    //     echo $_SESSION["password"] . "<br>";
+    // }
 
     if(isset($_POST["logout"])){
         session_destroy();
