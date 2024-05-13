@@ -1,24 +1,16 @@
 <?php 
   include("../db.php"); 
   session_start();  
-
-  $sql = "SELECT * FROM locales WHERE codUsuario = ?";
-  $stmt = mysqli_prepare($conn, $sql);
-  mysqli_stmt_bind_param($stmt, "s", $_SESSION["codUsuario"]);
-  mysqli_stmt_execute($stmt);
-  $result = mysqli_stmt_get_result($stmt);
-
-  $opcion = "";
-
-  while ($row = mysqli_fetch_assoc($result)) {
-    $codLocal = $row["codLocal"];  
-    $nombreLocal = $row["nombreLocal"];  
-    $opcion .= "<option value = '$codLocal'>$nombreLocal</option>";
-    echo $codLocal, $nombreLocal."<br>";
+  $option = "";
+  $codDueno = $_SESSION["user_id"];
+  $locales = mysqli_query($conn, "SELECT * FROM locales WHERE codUsuario = '$codDueno'");
+  while($local = mysqli_fetch_array($locales)){
+    $codLocal = $local["codLocal"];
+    $nombreLocal = $local["nombreLocal"];
+    $ubicacionLocal = $local["ubicacionLocal"];
+    $rubroLocal = $local["rubroLocal"];
+    $option .= "<option value='$codLocal'>$nombreLocal</option>";
   }
-  
-  mysqli_free_result($result);
-  mysqli_stmt_close($stmt);
   ?>
 
 <!DOCTYPE html>
@@ -46,32 +38,43 @@
     </div>
     <div class="inp">
       <label for="type">Para que tipo de cliente será válida: </label>
-      <select name="tipoCli" id="tipoCli" required multiple>
+      <select id="tipoCli" name="tipoCli">
         <option value="Inicial">Inicial</option>
         <option value="Medium">Medium</option>
         <option value="Premium">Premium</option>
-      </select>
+    </select><br>
+
     </div>
     <div class="inp">
-      <label for="type">Para que día/s de la semana será válida: </label>
-      <select name="diaDeSemana" id="diaDeSemana" required multiple>
-        <option value="lunes">Lunes</option>
-        <option value="martes">Martes</option>
-        <option value="miercoles">Miercoles</option>
-        <option value="jueves">Jueves</option>
-        <option value="viernes">Viernes</option>
-        <option value="sabado">Sabado</option>
-        <option value="domingo">Domingo</option>
-      </select>
+    <label>Para qué día/s de la semana será válida:</label><br>
+      <input type="checkbox" id="lunes" name="diaDeSemana[]" value="lunes">
+      <label for="lunes">Lunes</label><br>
+
+      <input type="checkbox" id="martes" name="diaDeSemana[]" value="martes">
+      <label for="martes">Martes</label><br>
+
+      <input type="checkbox" id="miercoles" name="diaDeSemana[]" value="miercoles">
+      <label for="miercoles">Miércoles</label><br>
+
+      <input type="checkbox" id="jueves" name="diaDeSemana[]" value="jueves">
+      <label for="jueves">Jueves</label><br>
+
+      <input type="checkbox" id="viernes" name="diaDeSemana[]" value="viernes">
+      <label for="viernes">Viernes</label><br>
+
+      <input type="checkbox" id="sabado" name="diaDeSemana[]" value="sabado">
+      <label for="sabado">Sábado</label><br>
+
+      <input type="checkbox" id="domingo" name="diaDeSemana[]" value="domingo">
+      <label for="domingo">Domingo</label><br>
+
     </div>
     <div class="inp">
       <label for="type">Para que local/es será válida: </label>
-      <select name="locales" id="locales" required multiple>
-        <?php echo $opcion;?>
-      </select>
+      <select name="codLocal"><?php echo $option;?></select>
     </div>    
    <div class="inp">
-      <input type="submit" value="login" name="login"/>
+      <input type="submit" value="submit" name="Login"/>
     </div>
   </form>
     <div>
@@ -80,20 +83,37 @@
 </body>
 </html>
 <?php
-     if (isset($_SESSION["email"])) {
-        echo $_SESSION["email"] . "<br>";
-    }
+  $descPromo = filter_input(INPUT_POST, "descPromo");
+  $fechaD = filter_input(INPUT_POST, "fechaD");
+  $fechaH = filter_input(INPUT_POST, "fechaH");
+  $estado = "pendiente";
+  $dds = isset($_POST["diaDeSemana"]) ? $_POST["diaDeSemana"] : array();
+  $ddsJSON = json_encode($dds);  
+  $tipoC = filter_input(INPUT_POST, "tipoCli");
+  $codL = filter_input(INPUT_POST, "codLocal");
 
-    if (isset($_SESSION["password"])) {
-      echo $_SESSION["password"] . "<br>";
-    }
+  
 
-    if (isset($_SESSION["user_id"])) {
-      echo $_SESSION["user_id"] . "<br>";
-    }else{
-      echo "aaaaaaaaaaaaaaaa";
-    }
+  if (empty($descPromo)) {
+    echo "La descripción de la promoción es requerida.";
+  } elseif (empty($fechaD)) {
+      echo "La fecha de inicio es requerida.";
+  } elseif (empty($fechaH)) {
+      echo "La fecha de fin es requerida.";
+  } elseif (empty($tipoC)) {
+      echo "Se debe seleccionar al menos un tipo de cliente.";
+  } elseif (empty($dds)) {
+      echo "Se debe seleccionar al menos un día de la semana.";
+  } elseif (empty($codLocal)) {
+      echo "Se debe seleccionar al menos un local.";
+  }else{
+    $sql = "INSERT INTO promociones (textoPromo, fechaDesdePromo, fechaHastaPromo, categoria_cliente, diasSemana, estadoPromo, codLocal) 
+    VALUES ('$descPromo', '$fechaD', '$fechaH', '$tipoC', '$ddsJSON', '$estado', '$codL')";
+    mysqli_query($conn, $sql);
+    header("Location: ../menuDueno.php");
+  }
 
+  mysqli_close($conn);
 
     if(isset($_POST["logout"])){
         session_destroy();

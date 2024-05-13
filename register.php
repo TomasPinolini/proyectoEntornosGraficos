@@ -24,9 +24,9 @@
       <label for="type">Tipo de usuario: </label>
       <select name="type" id="type" required>
         <option value="dueno">Dueño</option>
-        <option value="cliente1">Cliente Uno</option>
-        <option value="cliente2">Cliente Dos</option>
-        <option value="cliente3">Cliente Tres</option>
+        <option value="cInicial">Cliente Inicial</option>
+        <option value="cMedium">Cliente Medium</option>
+        <option value="cPremium">Cliente Premium</option>
       </select>
     </div>
     <div class="inp">
@@ -54,7 +54,7 @@
   }else{
     // Falta q corrobore q no haya un usuario registrado
     // con ese email ya.
-    if($type == "cliente1" or $type == "cliente2" or $type == "cliente3"){
+    if($type == "cInicial" or $type == "cMedium" or $type == "cPremium"){
       $typeCli = $type;
       $type = 'cliente';
     }else{

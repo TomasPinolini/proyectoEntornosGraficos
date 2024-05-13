@@ -31,9 +31,9 @@
         
         <label for="rubro">Rubro:</label><br>
         <select id="rubro" name="rubro">
-            <option value="gas">Gastronomía</option>
-            <option value="ind">Indumentaria</option>
-            <option value="perf">Perfumería</option>
+            <option value="gastronomia">Gastronomía</option>
+            <option value="indumentaria">Indumentaria</option>
+            <option value="perfumeria">Perfumería</option>
         </select><br>
         <label for="dueno">Dueño:</label><br>
         <select id="dueno" name="dueno">
