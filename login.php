@@ -1,6 +1,6 @@
 <?php 
-  // include("db.php"); 
-  // session_start();
+  include("db.php"); 
+  session_start();
 
   // $sql = "SELECT * FROM usuarios";
   // $results = mysqli_query($conn, $sql);

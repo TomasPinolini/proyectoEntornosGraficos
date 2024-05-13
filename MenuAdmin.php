@@ -63,19 +63,20 @@
     <button onclick="window.location.href='login.php'">Log in</button>
     </div>
     <?php
-         if (isset($_SESSION["email"])) {
-            echo $_SESSION["email"] . "<br>";
-        }
     
-        if (isset($_SESSION["password"])) {
-            echo $_SESSION["password"] . "<br>";
-        }
+        //  if (isset($_SESSION["email"])) {
+        //     echo $_SESSION["email"] . "<br>";
+        // }
+    
+        // if (isset($_SESSION["password"])) {
+        //     echo $_SESSION["password"] . "<br>";
+        // }
         
-        if (isset($_SESSION["user_id"])) {
-            echo $_SESSION["user_id"] . "<br>";
-        }else{
-            echo"aaaaaaaaaaaaa";
-        }
+        // if (isset($_SESSION["user_id"])) {
+        //     echo $_SESSION["user_id"] . "<br>";
+        // }else{
+        //     echo"aaaaaaaaaaaaa";
+        // }
 
         if(isset($_POST["logout"])){
             session_destroy();

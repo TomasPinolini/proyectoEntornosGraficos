@@ -41,32 +41,29 @@
 </html>
 
 <?php
-  if($_SERVER["REQUEST_METHOD"]=="POST"){
-    $email = filter_input(INPUT_POST, "email");
-    $type = filter_input(INPUT_POST, "type");
-    $password = filter_input(INPUT_POST, "password");
+  $email = filter_input(INPUT_POST, "email");
+  $type = filter_input(INPUT_POST, "type");
+  $password = filter_input(INPUT_POST, "password");
 
-    if(empty($email)){
-      echo "La dirección email es requerida.";
-    }elseif(empty($type)){
-      echo "El tipo de usuario es requerido.";
-    }elseif(empty($password)){
-      echo "La contraseña es requerida.";
+  if(empty($email)){
+    echo "La dirección email es requerida.";
+  }elseif(empty($type)){
+    echo "El tipo de usuario es requerido.";
+  }elseif(empty($password)){
+    echo "La contraseña es requerida.";
+  }else{
+    // Falta q corrobore q no haya un usuario registrado
+    // con ese email ya.
+    if($type == "cliente1" or $type == "cliente2" or $type == "cliente3"){
+      $typeCli = $type;
+      $type = 'cliente';
     }else{
-      // Falta q corrobore q no haya un usuario registrado
-      // con ese email ya.
-      if($type == "cliente1" or $type == "cliente2" or $type == "cliente3"){
-        $typeCli = $type;
-        $type = 'cliente';
-      }else{
-        $type = 'dueno de local';
-      }
-      $sql = "INSERT INTO usuarios (nombreUsuario, claveUsuario, tipoUsuario, 
-      categoria_cliente) VALUES ('$email', '$password', '$type', '$typeCli')";
-      mysqli_query($conn, $sql);
-      header("Location: login.php");
-
+      $type = 'dueno de local';
     }
+    $sql = "INSERT INTO usuarios (nombreUsuario, claveUsuario, tipoUsuario, 
+    categoria_cliente) VALUES ('$email', '$password', '$type', '$typeCli')";
+    mysqli_query($conn, $sql);
+    header("Location: login.php");
   }
   mysqli_close($conn);
 ?>
