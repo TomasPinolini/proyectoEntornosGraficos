@@ -6,10 +6,10 @@
     $db_name = "proyectoeg";
     $conn = "";
 
-    try{
-        $conn = mysqli_connect($db_server, $db_user, $db_pass, $db_name);
-    }catch(mysqli_sql_exception){
-        echo"Nahhh";
+    $mysqli  = new mysqli(hostname: $db_server, username: $db_user, password: $db_pass, database: $db_name);
+    
+    if ($mysqli->connect_error) {
+        die("Connection failed: " . $mysqli->connect_error);
     }
     // $usuarios = mysqli_query($conn, "SELECT * FROM usuarios");
     // while($usuario = mysqli_fetch_array($usuarios)){
@@ -19,5 +19,6 @@
     //if($conn){
         //echo"Yes";
     //}
+    return $mysqli;
 
 ?>

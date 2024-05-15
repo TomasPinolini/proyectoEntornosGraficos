@@ -11,7 +11,7 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>SISTEMA OFERTAS</h1>
+    <h1>NOVEDADES</h1>
     <br>
     <div>
     <button onclick="window.location.href='../MenuCliente.php'">Menu Cliente</button>

@@ -1,10 +1,8 @@
 <?php 
   include("../db.php"); 
   session_start();  
-//   $usuarios = mysqli_query($conn, "SELECT * FROM usuarios");
-//   while($usuario = mysqli_fetch_array($usuarios)){
   $option = "";
-  $duenos = mysqli_query($conn, "SELECT * FROM usuarios WHERE tipoUsuario = 'dueno de local'");
+  $duenos = mysqli_query($mysqli, "SELECT * FROM usuarios WHERE tipoUsuario = 'dueno de local'");
   while($dueno = mysqli_fetch_array($duenos)){
     $codUsuario = $dueno["codUsuario"];
     $nombreUsuario = $dueno["nombreUsuario"];
@@ -48,38 +46,27 @@
 </body>
 </html>
 <?php
+if(isset($_POST["name"])){
+  $nomLocal = filter_input(INPUT_POST, "name");
+  $ubiLocal = filter_input(INPUT_POST, "location");
+  $rubroLocal = filter_input(INPUT_POST, "rubro");
+  $duenoLocal = filter_input(INPUT_POST, "dueno");
+  
+  if(empty($nomLocal)){
+    echo "El nombre es requerido.";
+  }elseif(empty($ubiLocal)){
+    echo "La ubicación es requerido.";
+  }elseif(empty($rubroLocal)){
+      echo "El rubro del local es requerido.";
+  }elseif(empty($duenoLocal)){
+      echo "El dueño del local es requerido.";
+  }else{
+    $sql = "INSERT INTO locales (nombreLocal, ubicacionLocal, rubroLocal, codUsuario) 
+    VALUES ('$nomLocal', '$ubiLocal', '$rubroLocal', '$duenoLocal')";
+    mysqli_query($mysqli, $sql);
+    header("Location: ../menuAdmin.php");
+  }
+  mysqli_close($mysqli);
 
-$nomLocal = filter_input(INPUT_POST, "name");
-$ubiLocal = filter_input(INPUT_POST, "location");
-$rubroLocal = filter_input(INPUT_POST, "rubro");
-$duenoLocal = filter_input(INPUT_POST, "dueno");
-
-if(empty($nomLocal)){
-  echo "El nombre es requerido.";
-}elseif(empty($ubiLocal)){
-  echo "La ubicación es requerido.";
-}elseif(empty($rubroLocal)){
-    echo "El rubro del local es requerido.";
-}elseif(empty($duenoLocal)){
-    echo "El dueño del local es requerido.";
-}else{
-  $sql = "INSERT INTO locales (nombreLocal, ubicacionLocal, rubroLocal, codUsuario) 
-  VALUES ('$nomLocal', '$ubiLocal', '$rubroLocal', '$duenoLocal')";
-  mysqli_query($conn, $sql);
-  header("Location: ../menuAdmin.php");
 }
-mysqli_close($conn);
-    //  if (isset($_SESSION["email"])) {
-    //     echo $_SESSION["email"] . "<br>";
-    // }
-
-    // if (isset($_SESSION["password"])) {
-    //     echo $_SESSION["password"] . "<br>";
-    // }
-
-    if(isset($_POST["logout"])){
-        session_destroy();
-        header("Location: login.php");
-    }
-
 ?>

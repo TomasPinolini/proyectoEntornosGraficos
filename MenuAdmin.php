@@ -1,6 +1,19 @@
 <?php 
-  include("db.php"); 
-  session_start();  
+    session_start();
+    if(!isset($_SESSION["codUsuario"])){
+        header("Location: login.php");
+        exit;
+    }else{
+        $mysqli = require __DIR__ . "/db.php";
+        
+        $sql = "SELECT * FROM usuarios WHERE codUsuario = {$_SESSION["codUsuario"]}";
+                
+        $result = $mysqli->query($sql);
+        
+        $user = $result->fetch_assoc();
+      
+        $mailUsuario = ucfirst(explode('@', $user["nombreUsuario"])[0]);
+    }   
 ?>
 
 <!DOCTYPE html>
@@ -50,7 +63,7 @@
     </style>
 </head>
 <body>
-    <div class="welcome">Bienvenido Administrador!</div>
+    <div class="welcome">Bienvenido <?= htmlspecialchars($mailUsuario) ?>!</div>
     <div class="navbar">
         <a href="menuAdm/gestion_ofertas.php">Gestionar Ofertas</a>
         <a href="menuAdm/crear_locales.php">Crear Locales</a>
@@ -60,29 +73,7 @@
         <a href="menuAdm/uso_desc.php">Uso Descuentos</a>
     </div>
     <div>
-    <button onclick="window.location.href='login.php'">Log in</button>
+        <button onclick="window.location.href='logout.php'">Log out</button>
     </div>
-    <?php
-    
-        //  if (isset($_SESSION["email"])) {
-        //     echo $_SESSION["email"] . "<br>";
-        // }
-    
-        // if (isset($_SESSION["password"])) {
-        //     echo $_SESSION["password"] . "<br>";
-        // }
-        
-        // if (isset($_SESSION["user_id"])) {
-        //     echo $_SESSION["user_id"] . "<br>";
-        // }else{
-        //     echo"aaaaaaaaaaaaa";
-        // }
-
-        if(isset($_POST["logout"])){
-            session_destroy();
-            header("Location: login.php");
-        }
-
-    ?>  
 </body>
 </html>

@@ -1,5 +1,4 @@
 <?php 
-  include("db.php"); 
   session_start();  
 ?>
 
@@ -9,13 +8,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="script.js"></script>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
     <title>Login-Register</title>
 </head>
 <body>
+  <h1>Register</h1>
   <button onclick="redirectToLogIn()">Log In...</button>
-  
-  <form action="" method="post" class="form">
+  <form action="process_register.php" method="post" class="form">
     <div class="inp">
       <label for="email">Ingrese su dirección e-mail: </label>
       <input type="email" name="email" id="email" required />
@@ -28,45 +27,17 @@
       </select>
     </div>
     <div class="inp">
-      <div class="inp">
-        <label for="password">Contraseña: </label>
-        <input type="text" name="password" id="password" required />
-      </div>
-      <input type="submit" name="submit" value="Registro" />
+      <label for="password">Contraseña: </label>
+      <input type="text" name="password" id="password" required />
+    </div>
+    <div class="inp">
+      <label for="password_conf">Repita la contraseña: </label>
+      <input type="text" name="password_conf" id="password_conf" required />
+    </div>
+    <input type="submit" name="submit" value="registro" />
     </div>
   </form>
 </body>
 </html>
 
-<?php
-  $email = filter_input(INPUT_POST, "email");
-  $type = filter_input(INPUT_POST, "type");
-  $password = filter_input(INPUT_POST, "password");
 
-  if(empty($email)){
-    echo "La dirección email es requerida.";
-  }elseif(empty($type)){
-    echo "El tipo de usuario es requerido.";
-  }elseif(empty($password)){
-    echo "La contraseña es requerida.";
-  }else{
-    // Falta q corrobore q no haya un usuario registrado
-    // con ese email ya.
-    if($type == "cliente"){
-      $typeCli = "Inicial";
-    }else{
-      $type = 'dueno de local';
-    }
-    $sql = "INSERT INTO usuarios (nombreUsuario, claveUsuario, tipoUsuario, 
-    categoria_cliente) VALUES ('$email', '$password', '$type', '$typeCli')";
-    mysqli_query($conn, $sql);
-    header("Location: login.php");
-  }
-  if($type == "Cliente"){
-    echo "Cliente";
-  }else{
-    echo "Dueño";
-  }
-
-  mysqli_close($conn);
-?>

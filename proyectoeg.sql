@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: May 08, 2024 at 11:04 PM
+-- Generation Time: May 13, 2024 at 11:11 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -28,12 +28,21 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `locales` (
-  `colLocal` int(11) NOT NULL,
+  `codLocal` int(11) NOT NULL,
   `nombreLocal` varchar(100) NOT NULL,
   `ubicacionLocal` varchar(50) NOT NULL,
   `rubroLocal` varchar(20) NOT NULL,
   `codUsuario` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `locales`
+--
+
+INSERT INTO `locales` (`codLocal`, `nombreLocal`, `ubicacionLocal`, `rubroLocal`, `codUsuario`) VALUES
+(1, 'Tomtom', 'Aca', 'SexShop', 1),
+(2, 'primer localsito', 'alla', 'gas', 5),
+(3, 'segundoLocalsito', 'alla', 'gastronomia', 5);
 
 -- --------------------------------------------------------
 
@@ -66,6 +75,15 @@ CREATE TABLE `promociones` (
   `codLocal` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `promociones`
+--
+
+INSERT INTO `promociones` (`codPromo`, `textoPromo`, `fechaDesdePromo`, `fechaHastaPromo`, `categoria_cliente`, `diasSemana`, `estadoPromo`, `codLocal`) VALUES
+(23, 'primerPromo', '2024-05-14', '2024-05-16', 'Inicial', '[\"lunes\",\"martes\",\"miercoles\"]', 'pendiente', 2),
+(24, 'segundaPromo', '2024-06-05', '2024-06-08', 'Inicial', '[\"lunes\",\"martes\",\"miercoles\",\"jueves\",\"viernes\",\"sabado\",\"domingo\"]', 'pendiente', 3),
+(26, 'terceraPromo', '2024-05-17', '2024-06-07', 'Inicial', '[\"lunes\",\"martes\",\"miercoles\",\"jueves\"]', 'pendiente', 1);
+
 -- --------------------------------------------------------
 
 --
@@ -87,11 +105,21 @@ CREATE TABLE `usos_promociones` (
 
 CREATE TABLE `usuarios` (
   `codUsuario` int(11) NOT NULL,
-  `nombreUsuairo` varchar(100) NOT NULL,
+  `nombreUsuario` varchar(100) NOT NULL,
   `claveUsuario` varchar(8) NOT NULL,
   `tipoUsuario` enum('administrador','dueno de local','cliente') NOT NULL,
   `categoria_cliente` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `usuarios`
+--
+
+INSERT INTO `usuarios` (`codUsuario`, `nombreUsuario`, `claveUsuario`, `tipoUsuario`, `categoria_cliente`) VALUES
+(1, 'tomaspinolini03@gmail.com', '123', 'dueno de local', ''),
+(3, 'tomadmin@gmail.com', '123', 'administrador', ''),
+(5, 'tomdueno@gmail.com', '123', 'dueno de local', ''),
+(6, 'tomcliente@gmail.com', '123', 'cliente', 'Inicial');
 
 --
 -- Indexes for dumped tables
@@ -101,7 +129,7 @@ CREATE TABLE `usuarios` (
 -- Indexes for table `locales`
 --
 ALTER TABLE `locales`
-  ADD PRIMARY KEY (`colLocal`),
+  ADD PRIMARY KEY (`codLocal`),
   ADD KEY `codUsuario` (`codUsuario`);
 
 --
@@ -129,7 +157,7 @@ ALTER TABLE `usos_promociones`
 --
 ALTER TABLE `usuarios`
   ADD PRIMARY KEY (`codUsuario`),
-  ADD UNIQUE KEY `nombreUsuairo` (`nombreUsuairo`);
+  ADD UNIQUE KEY `nombreUsuairo` (`nombreUsuario`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -139,7 +167,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT for table `locales`
 --
 ALTER TABLE `locales`
-  MODIFY `colLocal` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `codLocal` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `novedades`
@@ -151,13 +179,13 @@ ALTER TABLE `novedades`
 -- AUTO_INCREMENT for table `promociones`
 --
 ALTER TABLE `promociones`
-  MODIFY `codPromo` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `codPromo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `codUsuario` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `codUsuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Constraints for dumped tables
@@ -173,7 +201,7 @@ ALTER TABLE `locales`
 -- Constraints for table `promociones`
 --
 ALTER TABLE `promociones`
-  ADD CONSTRAINT `promociones_ibfk_1` FOREIGN KEY (`codLocal`) REFERENCES `locales` (`colLocal`);
+  ADD CONSTRAINT `promociones_ibfk_1` FOREIGN KEY (`codLocal`) REFERENCES `locales` (`codLocal`);
 
 --
 -- Constraints for table `usos_promociones`
