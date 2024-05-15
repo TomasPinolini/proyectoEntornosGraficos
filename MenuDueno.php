@@ -5,13 +5,9 @@
         exit;
     }else{
         $mysqli = require __DIR__ . "/db.php";
-        
-        $sql = "SELECT * FROM usuarios WHERE codUsuario = {$_SESSION["codUsuario"]}";
-                
+        $sql = "SELECT * FROM usuarios WHERE codUsuario = {$_SESSION["codUsuario"]}";  
         $result = $mysqli->query($sql);
-        
         $user = $result->fetch_assoc();
-        
         $mailUsuario = ucfirst(explode('@', $user["nombreUsuario"])[0]);
     }   
 ?>
@@ -68,6 +64,8 @@
         <a href="menuDue/ingresar_promo.php">Ingresar Promo</a>
         <a href="menuDue/gestion_descuentos.php">Gestion Descuentos</a>
         <a href="menuDue/uso_promos.php">Uso Promos</a>
+        <a href="ver_novedades.php">Ver Novedades</a>
+
     </div>
     <div>
         <button onclick="window.location.href='logout.php'">Log out</button>

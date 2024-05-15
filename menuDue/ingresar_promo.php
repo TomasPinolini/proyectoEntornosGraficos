@@ -17,6 +17,8 @@
       $option .= "<option value='$codLocal'>$nombreLocal</option>";
     }
   }
+  $today = date('Y-m-d');
+
   ?>
 
 <!DOCTYPE html>
@@ -37,7 +39,7 @@
         </div>
         <div class="inp">
           <label for="fechaD">Desde que fecha será válida la oferta: </label>
-          <input type="date" name="fechaD" id="fechaD" required min="2024-05-09"/>
+          <input type="date" name="fechaD" id="fechaD" required min="2024-05-09" value="<?php echo $today;?>"/>
         </div>
         <div class="inp">
           <label for="fechaH">Hasta que fecha será válida la oferta: </label>

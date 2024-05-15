@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: May 13, 2024 at 11:11 PM
+-- Generation Time: May 15, 2024 at 02:28 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -40,9 +40,10 @@ CREATE TABLE `locales` (
 --
 
 INSERT INTO `locales` (`codLocal`, `nombreLocal`, `ubicacionLocal`, `rubroLocal`, `codUsuario`) VALUES
-(1, 'Tomtom', 'Aca', 'SexShop', 1),
-(2, 'primer localsito', 'alla', 'gas', 5),
-(3, 'segundoLocalsito', 'alla', 'gastronomia', 5);
+(4, 'primer localsito', 'alla', 'gastronomia', 10),
+(5, 'segundo localsito', 'alla', 'gastronomia', 10),
+(6, 'tercerLocalsito', 'acanomas', 'perfumeria', 20),
+(7, 'tomduenitoLocalsito', 'allaporalla', 'indumentaria', 19);
 
 -- --------------------------------------------------------
 
@@ -80,9 +81,11 @@ CREATE TABLE `promociones` (
 --
 
 INSERT INTO `promociones` (`codPromo`, `textoPromo`, `fechaDesdePromo`, `fechaHastaPromo`, `categoria_cliente`, `diasSemana`, `estadoPromo`, `codLocal`) VALUES
-(23, 'primerPromo', '2024-05-14', '2024-05-16', 'Inicial', '[\"lunes\",\"martes\",\"miercoles\"]', 'pendiente', 2),
-(24, 'segundaPromo', '2024-06-05', '2024-06-08', 'Inicial', '[\"lunes\",\"martes\",\"miercoles\",\"jueves\",\"viernes\",\"sabado\",\"domingo\"]', 'pendiente', 3),
-(26, 'terceraPromo', '2024-05-17', '2024-06-07', 'Inicial', '[\"lunes\",\"martes\",\"miercoles\",\"jueves\"]', 'pendiente', 1);
+(27, 'cuartaPromo', '2024-05-16', '2024-08-02', 'Medium', '[\"lunes\",\"martes\",\"jueves\",\"sabado\"]', 'aprobada', 6),
+(28, 'primerPromo', '2024-05-15', '2024-05-17', 'Premium', '[\"viernes\"]', 'aprobada', 4),
+(29, 'segundaPromo', '2024-05-16', '2024-05-24', 'Medium', '[\"jueves\"]', 'aprobada', 6),
+(30, 'quintaPromo', '2024-05-09', '2024-05-16', 'Premium', '[\"martes\"]', 'aprobada', 7),
+(31, 'promoinciailes', '2024-05-09', '2200-01-01', 'Inicial', '[\"lunes\",\"martes\",\"miercoles\",\"jueves\",\"viernes\"]', 'aprobada', 5);
 
 -- --------------------------------------------------------
 
@@ -108,18 +111,23 @@ CREATE TABLE `usuarios` (
   `nombreUsuario` varchar(100) NOT NULL,
   `claveUsuario` varchar(8) NOT NULL,
   `tipoUsuario` enum('administrador','dueno de local','cliente') NOT NULL,
-  `categoria_cliente` varchar(10) NOT NULL
+  `categoria_cliente` varchar(10) NOT NULL,
+  `token_activation` varchar(64) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `usuarios`
 --
 
-INSERT INTO `usuarios` (`codUsuario`, `nombreUsuario`, `claveUsuario`, `tipoUsuario`, `categoria_cliente`) VALUES
-(1, 'tomaspinolini03@gmail.com', '123', 'dueno de local', ''),
-(3, 'tomadmin@gmail.com', '123', 'administrador', ''),
-(5, 'tomdueno@gmail.com', '123', 'dueno de local', ''),
-(6, 'tomcliente@gmail.com', '123', 'cliente', 'Inicial');
+INSERT INTO `usuarios` (`codUsuario`, `nombreUsuario`, `claveUsuario`, `tipoUsuario`, `categoria_cliente`, `token_activation`) VALUES
+(10, 'tomdueno@gmail.com', '123', 'dueno de local', '', NULL),
+(11, 'tomcliente@gmail.com', '123', 'cliente', 'Inicial', NULL),
+(19, 'tomduenito@gmail.com', '123', 'dueno de local', '', NULL),
+(20, 'tomduenaso@gmail.com', '123', 'dueno de local', '', NULL),
+(21, 'tomduenotoken@gmail.com', '123', 'dueno de local', '', NULL),
+(22, 'tomclientetoken@gmail.com', '123', 'cliente', 'Inicial', NULL),
+(40, 'tomaspinolini2003@gmail.com', '123', 'cliente', 'Inicial', NULL),
+(41, 'tomadmin@gmail.com', '123', 'administrador', '', NULL);
 
 --
 -- Indexes for dumped tables
@@ -130,7 +138,7 @@ INSERT INTO `usuarios` (`codUsuario`, `nombreUsuario`, `claveUsuario`, `tipoUsua
 --
 ALTER TABLE `locales`
   ADD PRIMARY KEY (`codLocal`),
-  ADD KEY `codUsuario` (`codUsuario`);
+  ADD KEY `locales_ibfk_1` (`codUsuario`);
 
 --
 -- Indexes for table `novedades`
@@ -143,7 +151,7 @@ ALTER TABLE `novedades`
 --
 ALTER TABLE `promociones`
   ADD PRIMARY KEY (`codPromo`),
-  ADD KEY `codLocal` (`codLocal`);
+  ADD KEY `promociones_ibfk_1` (`codLocal`);
 
 --
 -- Indexes for table `usos_promociones`
@@ -157,7 +165,9 @@ ALTER TABLE `usos_promociones`
 --
 ALTER TABLE `usuarios`
   ADD PRIMARY KEY (`codUsuario`),
-  ADD UNIQUE KEY `nombreUsuairo` (`nombreUsuario`);
+  ADD UNIQUE KEY `nombreUsuairo` (`nombreUsuario`),
+  ADD UNIQUE KEY `nombreUsuario` (`nombreUsuario`),
+  ADD UNIQUE KEY `token_activation` (`token_activation`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -167,7 +177,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT for table `locales`
 --
 ALTER TABLE `locales`
-  MODIFY `codLocal` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `codLocal` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `novedades`
@@ -179,13 +189,13 @@ ALTER TABLE `novedades`
 -- AUTO_INCREMENT for table `promociones`
 --
 ALTER TABLE `promociones`
-  MODIFY `codPromo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `codPromo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT for table `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `codUsuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `codUsuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- Constraints for dumped tables
@@ -195,13 +205,13 @@ ALTER TABLE `usuarios`
 -- Constraints for table `locales`
 --
 ALTER TABLE `locales`
-  ADD CONSTRAINT `locales_ibfk_1` FOREIGN KEY (`codUsuario`) REFERENCES `usuarios` (`codUsuario`);
+  ADD CONSTRAINT `locales_ibfk_1` FOREIGN KEY (`codUsuario`) REFERENCES `usuarios` (`codUsuario`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `promociones`
 --
 ALTER TABLE `promociones`
-  ADD CONSTRAINT `promociones_ibfk_1` FOREIGN KEY (`codLocal`) REFERENCES `locales` (`codLocal`);
+  ADD CONSTRAINT `promociones_ibfk_1` FOREIGN KEY (`codLocal`) REFERENCES `locales` (`codLocal`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `usos_promociones`

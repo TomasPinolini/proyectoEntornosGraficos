@@ -81,22 +81,4 @@
         }
         header("Location: aprobar_promos.php");
     }
-
-
-
-    // UPDATE promociones SET estadoPromo = 'pendiente';
-
-    //  if (isset($_SESSION["email"])) {
-    //     echo $_SESSION["email"] . "<br>";
-    // }
-
-    // if (isset($_SESSION["password"])) {
-    //     echo $_SESSION["password"] . "<br>";
-    // }
-
-    // if(isset($_POST["logout"])){
-    //     session_destroy();
-    //     header("Location: login.php");
-    // }
-
 ?>

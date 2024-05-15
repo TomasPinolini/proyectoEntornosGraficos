@@ -11,25 +11,85 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>USA LAS PROMOCIONES</h1>
-    <br>
-    <div>
+    <h1>USA LAS PROMOCIONES</h1><br>
+    <form action="" method="POST">
+        <select name="local" id="local">
+            <option value='' selected disabled>Seleccione:</option>
+            <?php
+                $sqlLocales = "SELECT * FROM locales";
+                $locales = mysqli_query($mysqli, $sqlLocales);
+                while($local = mysqli_fetch_array($locales)){
+                    $codLocal = $local["codLocal"];
+                    $nombreLocal = $local["nombreLocal"];
+                    echo "<option value='$codLocal'>$nombreLocal</option>";
+                }
+            ?>
+        </select>
+        <input type="submit" value="Buscar promociones">
+    </form>
+    <?php if(isset($_POST["local"])): ?>
+        <form action="" method="post">
+            <?php
+               $sqlPromos = "SELECT * FROM promociones WHERE codLocal = ? AND categoria_cliente = ?";
+               $stmt = $mysqli->prepare($sqlPromos);
+               $stmt->bind_param("ss", $_POST["local"], $_SESSION["categoria_cliente"]);
+               $stmt->execute();
+               $result = $stmt->get_result();
+
+               while ($promo = $result->fetch_assoc()) {
+                    $codPromo = $promo["codPromo"];
+                    $desc = $promo["textoPromo"];
+                    echo "<input type='checkbox' name='promos[]' value='$codPromo'>$desc</input><br>";
+                }   
+            ?>
+            <input type="submit" value="Usar promo">
+        </form>
+    <?php endif ?>
+
+    <br><div>
     <button onclick="window.location.href='../MenuCliente.php'">Menu Cliente</button>
     </div>
 </body>
 </html>
+
 <?php
-     if (isset($_SESSION["email"])) {
-        echo $_SESSION["email"] . "<br>";
-    }
+    if(isset($_POST["promos"])){
+        $promos = $_POST["promos"];
+        $today = date('Y-m-d');
+        foreach ($promos as $promo) {
+            $sql = "INSERT INTO usos_promociones (codCliente, codPromo, fechaUsoPromo, estado) VALUES (?,?,?, '')";
+            $stmt = $mysqli->stmt_init();
+            $stmt->prepare($sql);
+            $stmt->bind_param("sss", $_SESSION["codUsuario"], $promo, $today);
+            $stmt -> execute();
+        }
+    
+        $sqlCuentaUsos = "SELECT codCliente FROM usos_promociones";
+        $usos = mysqli_query($mysqli, $sqlCuentaUsos);
+        $contador = 0;
+        foreach($usos as $uso){
+            if($uso["codCliente"] === $_SESSION["codUsuario"]){
+                $contador++;
+            }
+        }
 
-    if (isset($_SESSION["password"])) {
-        echo $_SESSION["password"] . "<br>";
-    }
+        if($contador > 5){
+            $categoria = "Premium";
+            $sqlCatCliente = "UPDATE usuarios set categoria_cliente = ? WHERE codUsuario = ?"; 
+            $stmt = $mysqli->stmt_init();
+            $stmt->prepare($sqlCatCliente);
+            $stmt->bind_param("ss", $categoria, $_SESSION["codUsuario"]);
+            $stmt -> execute();
+        }else if($contador > 3){
+            $categoria = "Medium";
+            $sqlCatCliente = "UPDATE usuarios set categoria_cliente = ? WHERE codUsuario = ?"; 
+            $stmt = $mysqli->stmt_init();
+            $stmt->prepare($sqlCatCliente);
+            $stmt->bind_param("ss", $categoria, $_SESSION["codUsuario"]);
+            $stmt -> execute();
+        }
 
-    if(isset($_POST["logout"])){
-        session_destroy();
-        header("Location: login.php");
+
     }
 
 ?>
