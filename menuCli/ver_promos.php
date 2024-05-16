@@ -58,7 +58,7 @@
                 }
             ?>
             </table><br>
-    <?php endif ?>
+            <?php endif ?>
     <div>
     <button onclick="window.location.href='../MenuCliente.php'">Menu Cliente</button>
     </div>
