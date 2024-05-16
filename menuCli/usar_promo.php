@@ -1,6 +1,9 @@
 <?php 
   include("../db.php"); 
   session_start();  
+  $ddsemana = [1 => "lunes", 2 => "martes", 3 => "miercoles", 4 => "jueves", 5 => "viernes", 6 => "sabado", 0 => "domingo"];
+  $hoy = $ddsemana[date('w')];
+  $fechahoy = date("Y-m-d");
 ?>
 
 <!DOCTYPE html>
@@ -35,14 +38,22 @@
                $stmt->bind_param("ss", $_POST["local"], $_SESSION["categoria_cliente"]);
                $stmt->execute();
                $result = $stmt->get_result();
-
+               $contador = 0;
                while ($promo = $result->fetch_assoc()) {
                     $codPromo = $promo["codPromo"];
                     $desc = $promo["textoPromo"];
-                    echo "<input type='checkbox' name='promos[]' value='$codPromo'>$desc</input><br>";
+                    $dds = $promo["diasSemana"];
+                    $fechaDesdePromo = $promo["fechaDesdePromo"];
+                    $fechaHastaPromo = $promo["fechaHastaPromo"];
+                    if(strpos($dds, $hoy) !== false && $fechaDesdePromo <= $fechahoy && $fechaHastaPromo >= $fechahoy ){
+                        $contador++;
+                        echo "<input type='checkbox' name='promos[]' value='$codPromo'>$desc</input><br>";
+                    }
                 }   
             ?>
+            <?php if($contador > 0): ?>
             <input type="submit" value="Usar promo">
+            <?php endif?>
         </form>
     <?php endif ?>
 
@@ -57,7 +68,7 @@
         $promos = $_POST["promos"];
         $today = date('Y-m-d');
         foreach ($promos as $promo) {
-            $sql = "INSERT INTO usos_promociones (codCliente, codPromo, fechaUsoPromo, estado) VALUES (?,?,?, '')";
+            $sql = "INSERT INTO usos_promociones (codCliente, codPromo, fechaUsoPromo, estado) VALUES (?,?,?, 'enviada')";
             $stmt = $mysqli->stmt_init();
             $stmt->prepare($sql);
             $stmt->bind_param("sss", $_SESSION["codUsuario"], $promo, $today);
