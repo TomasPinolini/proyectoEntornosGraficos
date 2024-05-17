@@ -29,7 +29,9 @@
         <select id="type" name="type">
             <option value="administrador">Administrador</option>
             <option value="dueno de local">Dueño de local</option>
-            <option value="cliente">Cliente</option>
+            <option value="Premium">Cliente Premium</option>
+            <option value="Medium">Cliente Medium</option>
+            <option value="Inicial">Cliente Inicial</option>
         </select><br><br>
 
         <input type="submit" value="Subir notificación">

@@ -61,7 +61,6 @@
 <body>
     <div class="welcome">Bienvenido <?= htmlspecialchars($mailUsuario) ?>!</div>
     <div class="navbar">
-        <a href="menuAdm/gestion_ofertas.php">Gestionar Ofertas</a>
         <a href="menuAdm/crear_locales.php">Crear Locales</a>
         <a href="menuAdm/aprobar_duenos.php">Aprobar Dueños</a>
         <a href="menuAdm/aprobar_promos.php">Aprobar Promos</a>

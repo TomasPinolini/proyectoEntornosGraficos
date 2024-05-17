@@ -1,8 +1,12 @@
 <?php 
   include("db.php"); 
   session_start();  
-  $type = $_SESSION["tipoUsuario"]; 
-  $novedades = mysqli_query($mysqli, "SELECT textoNovedad FROM novedades WHERE tipoUsuario = '$type'");
+  $type = $_SESSION["tipoUsuario"];
+  if($type === 'cliente'){
+    $type = $_SESSION["categoria_cliente"];
+  } 
+  $fechahoy = date("Y-m-d");
+  $novedades = mysqli_query($mysqli, "SELECT * FROM novedades WHERE tipoUsuario = '$type'");
   ?>
 
 <!DOCTYPE html>
@@ -19,8 +23,12 @@
     <ol>
         <?php
             foreach($novedades as $nov){
+                $fechaDesdeNovedad = $nov["fechaDesdeNovedad"];
+                $fechaHastaNovedad = $nov["fechaHastaNovedad"];
                 $txtnov = $nov["textoNovedad"];
-                echo "<li>$txtnov</li>";
+                if($fechaDesdeNovedad <= $fechahoy && $fechaHastaNovedad >= $fechahoy ){
+                    echo "<li>$txtnov</li>";
+                }
             }
         ?>
     </ol>
