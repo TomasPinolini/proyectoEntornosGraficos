@@ -55,7 +55,7 @@
   <?php if(!$validated):?>
     <br><em>Confirme el registro.</em><br>
   <?php endif ?>
-  <form action="process_login.php" method="POST" class="form">
+  <form action="" method="POST" class="form">
     <div class="inp">
       <label for="name">Enter your email: </label>
       <input type="email" name="email" id="email" 
