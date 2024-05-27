@@ -1,6 +1,6 @@
 <?php
 
-    $token = "7b8e1b4f8efa02cf7d7fd82099671c67";
+    $token = $user["token_activation"];
 
     $mysqli = require __DIR__ . "/db.php";
 

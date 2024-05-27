@@ -39,7 +39,7 @@
     $mail->Subject = "Account Activation";
     $mail->Body = <<<END
 
-    Click <a href="https://example.com\eg\proyecto\activation_account.php?token=$activation_token">here</a> 
+    Click <a href="https://localhost\eg\proyecto\activation_account.php?token=$activation_token">here</a> 
     to activate your account.
 
     END;
