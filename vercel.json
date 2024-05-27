@@ -17,21 +17,17 @@
       { "src": "/menuDueno", "dest": "/menuDueno.php" },
       { "src": "/todas_promociones", "dest": "/todas_promociones.php" },
       { "src": "/ver_novedades", "dest": "/ver_novedades.php" },
-
       { "src": "/menuAdmin/aprobar_duenos", "dest": "/menuAdmin/aprobar_duenos.php" },
       { "src": "/menuAdmin/aprobar_promos", "dest": "/menuAdmin/aprobar_promos.php" },
       { "src": "/menuAdmin/crear_locales", "dest": "/menuAdmin/crear_locales.php" },
       { "src": "/menuAdmin/novedades", "dest": "/menuAdmin/novedades.php" },
       { "src": "/menuAdmin/uso_desc", "dest": "/menuAdmin/uso_desc.php" },
-
-      { "src": "/menuDueno/gestion_descuentos", "dest": "gestion_descuentos/menuDueno/.php" },
-      { "src": "/menuDueno/ingresar_promo", "dest": "ingresar_promo/menuDueno/.php" },
-      { "src": "/menuDueno/uso_promos", "dest": "uso_promos/menuDueno/.php" },
-
+      { "src": "/menuDueno/gestion_descuentos", "dest": "/menuDueno/gestion_descuentos.php" },
+      { "src": "/menuDueno/ingresar_promo", "dest": "/menuDueno/ingresar_promo.php" },
+      { "src": "/menuDueno/uso_promos", "dest": "/menuDueno/uso_promos.php" },
       { "src": "/menuCliente/usar_promo", "dest": "/menuCliente/usar_promo.php" },
       { "src": "/menuCliente/ver_novedades", "dest": "/menuCliente/ver_novedades.php" },
       { "src": "/menuCliente/ver_promos", "dest": "/menuCliente/ver_promos.php" },
-
       { "src": "/(.*)", "dest": "/index.php" }
     ]
   }
