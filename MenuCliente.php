@@ -19,52 +19,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Menu Cliente</title>
-    <style>
-        body {
-            background-color: #f0f0f0; /* Cambia esto al color que prefieras */
-        }
-
-        .welcome {
-            text-align: center;
-            font-size: 2em;
-            margin-bottom: 20px;
-        }
-
-        .navbar {
-            overflow: hidden;
-            background-color: #333;
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-        }
-
-        .navbar a {
-            color: #f2f2f2;
-            text-align: center;
-            padding: 14px 16px;
-            text-decoration: none;
-            flex: 1 1 auto;
-        }
-
-        .navbar a:hover {
-            background-color: #ddd;
-            color: black;
-        }
-
-        @media (max-width: 600px) {
-            .navbar a {
-                flex: 100%;
-                text-align: center;
-            }
-        }
-    </style>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles/menues.css">
 </head>
 <body>
     <div class="welcome">Bienvenido <?= htmlspecialchars($mailUsuario) ?>!</div>
-    <div class="navbar">
-        <a href="menuCli/ver_promos.php">Ver Promociones</a>
-        <a href="menuCli/usar_promo.php">Utilizar Ofertas</a>
-        <a href="ver_novedades.php">Ver Novedades</a>
+    <div class="container text-center">
+        <div class="row"><a class="button-link"href="menuCli/ver_promos.php">Ver Promociones</a></div>
+        <div class="row"><a class="button-link"href="menuCli/usar_promo.php">Utilizar Ofertas</a></div>
+        <div class="row"><a class="button-link"href="ver_novedades.php">Ver Novedades</a></div>
     </div>
     <div>
         <button onclick="window.location.href='logout.php'">Log out</button>

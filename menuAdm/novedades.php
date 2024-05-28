@@ -11,34 +11,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="../styles/tables.css">
+    <link rel="stylesheet" href="../styles/menues.css">
+    <link rel="stylesheet" href="../styles/forms.css">
 </head>
 <body>
-    <h1>NOVEDADES</h1>
-    <br>
-    <form action="" method="post">
+    <div class="welcome">Crear Novedad</div>
+    <form class = "form" action="" method="post">
         <label for="novedad">Nueva notificación:</label><br>
-        <textarea id="novedad" name="novedad"></textarea><br>
+        <textarea id="novedad" name="novedad"></textarea>
 
-        <label for="startDate">Fecha de inicio:</label><br>
+        <label for="startDate">Fecha de inicio:</label>
         <input type="date" id="startDate" name="startDate" value="<?php echo $today;?>"><br>
 
-        <label for="endDate">Fecha de fin:</label><br>
-        <input type="date" id="endDate" name="endDate"><br>
+        <label for="endDate">Fecha de fin:</label>
+        <input type="date" id="endDate" name="endDate">
 
-        <label for="type">Tipo de usuario:</label><br>
+        <label for="type">Tipo de usuario:</label>
         <select id="type" name="type">
             <option value="administrador">Administrador</option>
             <option value="dueno de local">Dueño de local</option>
             <option value="Premium">Cliente Premium</option>
             <option value="Medium">Cliente Medium</option>
             <option value="Inicial">Cliente Inicial</option>
-        </select><br><br>
+        </select>
 
         <input type="submit" value="Subir notificación">
-    </form><br>
+    </form>
     <div>
     <button onclick="window.location.href='../MenuAdmin.php'">Menu Admin</button>
-    </div><br>
+    </div>
 </body>
 </html>
 <?php

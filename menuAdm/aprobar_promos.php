@@ -16,9 +16,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="../styles/tables.css">
+    <link rel="stylesheet" href="../styles/menues.css">
+    <link rel="stylesheet" href="../styles/forms.css">
 </head>
 <body>
-    <h1>APROBAR PROMOS</h1>
+    <div class="welcome">Aprobar Promos</div>
     <?php if($hayono):?>
         <form action="" method="post">
             <table border='1'>
