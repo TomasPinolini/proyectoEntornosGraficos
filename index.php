@@ -146,7 +146,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     <span>Contraseña</span>
                     <input type="password" name="password" required />
                 </label>
-                <p class="forgot-pass"><a href="index.php">Olvido su contraseña?</a></p>
+                <p class="forgot-pass"><a href="reset_pass.php">Olvido su contraseña?</a></p>
                 <input type="submit" name="login" class="submit" value="Sign In">
             </form>
         </div>
