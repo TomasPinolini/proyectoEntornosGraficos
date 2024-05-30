@@ -1,7 +1,7 @@
 <?php 
     session_start();
     if(!isset($_SESSION["codUsuario"])){
-        header("Location: login.php");
+        header("Location: index.php");
         exit;
     }else{
         $mysqli = require __DIR__ . "/db.php";

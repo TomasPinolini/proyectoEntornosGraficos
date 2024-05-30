@@ -1,6 +1,12 @@
 <?php
 session_start();
-
+function generadorToken() {
+    $characteres = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    $token = '';
+    $max = strlen($characteres) - 1;
+    for ($i = 0; $i < 6; $i++) { $token .= $characteres[mt_rand(0, $max)]; }
+    return $token;
+}
 $login_invalid = false;
 $validated = true;
 
@@ -39,11 +45,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             die("Las contraseñas no coinciden.");
         }
 
-        $activation_token = bin2hex(random_bytes(16));
         $email = filter_input(INPUT_POST, "email");
         $type = filter_input(INPUT_POST, "type");
         $password = filter_input(INPUT_POST, "password");
         $typeCli = "";
+        $activation_token = null;
+
 
         $mysqli = require __DIR__ . "/db.php";
 
@@ -61,6 +68,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         }
 
         if ($type == "cliente") {
+            $activation_token = generadorToken();
             $typeCli = "Inicial";
 
             $mail = require __DIR__ . "/mailer.php";
@@ -68,8 +76,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $mail->addAddress($email);
             $mail->Subject = "Account Activation";
             $mail->Body = <<<END
-            Click <a href="https://localhost/eg/proyecto/activation_account.php?token=$activation_token">here</a> 
-            to activate your account.
+                <p>Bienvenido cliente!</p>
+                <p>Gracias por registrarte en nuestro sitio web. Para verificar tu dirección de correo electrónico, utiliza el siguiente código de verificación:</p>
+                <h2 style="background-color: #f8f9fa; padding: 10px; border-radius: 5px;">Código de Verificación: $activation_token</h2>
+                <p>Si no solicitaste esta verificación, puedes ignorar este correo electrónico. Si tienes alguna pregunta, no dudes en contactarnos.</p>
+                <p>Saludos,<br>El equipo de nuestro sitio web</p>
             END;
 
             try {
@@ -85,7 +96,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $stmt->bind_param("sssss", $email, $password, $type, $typeCli, $activation_token);
 
         if ($stmt->execute()) {
-            header("Location: registrado.php");
+            if($type == "cliente"){
+                header("Location: registrado.php");
+            }else{
+                header("Location: index.php");
+            }
             exit;
         } else {
             if ($mysqli->errno === 1062) {

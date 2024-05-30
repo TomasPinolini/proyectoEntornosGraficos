@@ -35,7 +35,9 @@
     <title>Account Activated</title>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="styles/index.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
+    <link rel="stylesheet" href="../styles/tables.css">
+    <link rel="stylesheet" href="../styles/menues.css">
+    <link rel="stylesheet" href="../styles/forms.css">
 </head>
 <body>
 
