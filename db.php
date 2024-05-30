@@ -11,14 +11,6 @@
     if ($mysqli->connect_error) {
         die("Connection failed: " . $mysqli->connect_error);
     }
-    // $usuarios = mysqli_query($conn, "SELECT * FROM usuarios");
-    // while($usuario = mysqli_fetch_array($usuarios)){
-        // echo $usuario["codUsuario"], $usuario["nombreUsuario"] . "<br>";
-    // };
-    // echo mysqli_num_rows($usuarios);
-    //if($conn){
-        //echo"Yes";
-    //}
     return $mysqli;
 
 ?>

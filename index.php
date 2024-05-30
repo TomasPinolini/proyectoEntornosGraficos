@@ -12,33 +12,36 @@ $validated = true;
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     if (isset($_POST["login"])) {
-        // Login process
         $mysqli = require __DIR__ . "/db.php";
 
         $sql = sprintf("SELECT * FROM usuarios WHERE nombreUsuario = '%s'",
             $mysqli->real_escape_string($_POST["email"]));
 
         $result = $mysqli->query($sql);
-        $user = $result->fetch_assoc();
-
-        if ($_POST["password"] === $user["claveUsuario"] && $user["token_activation"] === null) {
-            $_SESSION = $user;
-            switch ($user["tipoUsuario"]) {
-                case "administrador":
-                    header("Location: MenuAdmin.php");
-                    break;
-                case "dueno de local":
-                    header("Location: MenuDueno.php");
-                    break;
-                case "cliente":
-                    header("Location: MenuCliente.php");
-                    break;
-            }
-            exit;
-        } else if (isset($user["token_activation"])) {
-            $validated = false;
+        if ($result && $result->num_rows > 0) {
+            $user = $result->fetch_assoc();
+            if ($_POST["password"] === $user["claveUsuario"] && 
+                $_POST["email"] === $user["nombreUsuario"] && 
+                $user["token_activation"] === null) {
+                $_SESSION = $user;
+                switch ($user["tipoUsuario"]) {
+                    case "administrador":
+                        header("Location: MenuAdmin.php");
+                        break;
+                    case "dueno de local":
+                        header("Location: MenuDueno.php");
+                        break;
+                    case "cliente":
+                        header("Location: MenuCliente.php");
+                        break;
+                }
+                exit;
+            } else if (isset($user["token_activation"])) {
+                $validated = false;
+            }        
+        }else{
+            $login_invalid = true;
         }
-        $login_invalid = true;
     } elseif (isset($_POST["register"])) {
         // Registration process
         if ($_POST["password"] !== $_POST["password_conf"]) {
@@ -129,10 +132,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         <div class="form sign-in">
             <h2>Bienvenido!</h2>
             <?php if ($login_invalid): ?>
-                <br><em>Log In inválido</em>
+                <br><em>Usuario o contraseña incorrecto, intente de nuevo.</em>
             <?php endif ?>
             <?php if (!$validated): ?>
-                <br><em>Confirme el registro.</em><br>
+                <br><em>Confirme el registro antes de ingresar.</em><br>
             <?php endif ?>
             <form action="" method="POST">
                 <label>
