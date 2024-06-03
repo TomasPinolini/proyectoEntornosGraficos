@@ -1,60 +1,77 @@
 body {
-    display: flex;
-    flex-direction: column;
-    height: 100vh; 
-  }
-  
+  display: flex;
+  flex-direction: column;
+  background-color: #001327;
+  margin: 0;
+  padding: 0;
+  overflow-y: auto;
+}
+
 .welcome {
-    text-align: center;
-    font-size: 1.2em;
-    color: #fff;
-    background-color: #007bff;
-    padding: 10px 20px;
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: calc(20% - 20px);
-    max-height: 80px;
-  }
+  text-align: center;
+  font-size: 1.5em;
+  color: #fff;
+  background-color: #007bff;
+  padding: 10px 20px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: calc(20% - 20px);
+  max-height: 80px;
+}
 
 .container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between; 
-    margin: 5% 0;  
-    height: calc(70% - 20px);
-    flex-grow: 1;
-    gap: 2%; 
-    position: relative;
-  }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between; 
+  margin: 15px auto;  
+  height: calc(70% - 20px);
+  flex-grow: 1;
+  gap: 2%; 
+  position: relative;
+}
 
-  .row {
-    flex: 1;
-    margin-bottom: 5%;
-  }
+.row {
+  flex: 1;
+  width: 30%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 5px;
+  margin-top: 5px;
+  max-height: 100px;
+}
 
-  .button-link {
-    margin: 0 10px; /* Adjust horizontal margins */
-    padding: 15px 40px;
-    border-radius: 5px;
-    color: #fff;
-    background-color: #007bff; /* Button color */
-    text-decoration: none;
-    transition: all 0.3s ease-in-out;
+.button-link {
+  display: flex; 
+  align-items: center;
+  justify-content: center;  
+  padding: 15px 40px;
+  border-radius: 5px;
+  color: #fff;
+  background-color: #003a77;
+  text-decoration: none;
+  transition: all 0.3s ease-in-out;
+}
+
+.button-link.logout {
+  background-color: #dc3545;
+  border: 1px solid #ddd;
+}
+
+.button-link:hover {
+  background-color: #0062cc; 
+  transform: scale(1.05); 
+}
+
+.button-link.logout:hover {
+  background-color: #ff596a; 
+
+}
+
+@media (min-width: 600px) {
+  .container {
+      gap: 20px; /* Adjust gap for smaller screens */
   }
-  
-  .button-link.logout {
-    position: absolute;
-    bottom: 10px;
-    left: 10px;
-    padding: 15px 20px;
-    background-color: #dc3545;
-    border: 1px solid #ddd;
-  }
-  
-  .button-link:hover {
-    background-color: #0062cc; /* Change color on hover */
-    transform: scale(1.05); /* Add a slight scale on hover */
-  }
+}

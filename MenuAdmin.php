@@ -31,9 +31,7 @@
         <div class="row"><a class="button-link" href="menuAdm/novedades.php">Crear Novedades</a></div>
         <div class="row"><a class="button-link" href="menuAdm/uso_desc.php">Uso Descuentos</a></div>
         <div class="row"><a class="button-link" href="ver_novedades.php">Ver Novedades</a></div>
-    </div>
-    <div>
-        <button class="button-link logout" onclick="window.location.href='logout.php'">Log out</button>
+        <div class="row"><button class="button-link logout" onclick="window.location.href='logout.php'">Log out</button></div>
     </div>
 </body>
 </html>

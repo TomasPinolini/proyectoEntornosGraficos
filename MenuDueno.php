@@ -28,9 +28,7 @@
         <div class="row"><a class="button-link" href="menuDue/gestion_descuentos.php">Gestion Descuentos</a></div>
         <div class="row"><a class="button-link" href="menuDue/uso_promos.php">Uso Promos</a></div>
         <div class="row"><a class="button-link" href="ver_novedades.php">Ver Novedades</a></div>
+        <div class="row"><button class="button-link logout" onclick="window.location.href='logout.php'">Log out</button></div>
     </div>
-    <div>
-        <button class="button-link logout" onclick="window.location.href='logout.php'">Log out</button>
-    </div>  
 </body>
 </html>
