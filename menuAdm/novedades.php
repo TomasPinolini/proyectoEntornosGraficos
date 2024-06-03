@@ -45,9 +45,7 @@
 
         </form>
     </div>
-    <div>
-    <button class="menu-btn" onclick="window.location.href='../MenuAdmin.php'">Menu Admin</button>
-    </div>
+    <div class="menu-btn"><button onclick="window.location.href='../MenuAdmin.php'">Menu Admin</button></div>
 </body>
 </html>
 <?php

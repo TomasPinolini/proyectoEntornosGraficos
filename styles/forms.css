@@ -23,7 +23,7 @@
 }
 
 input, 
-textarea,
+textarea, 
 select {
     width: 100%;
     padding: 10px;
@@ -70,4 +70,14 @@ button:hover {
 .row-form{
     margin-top: 10px;
     width: 100%; 
+    /* display: flex; */
 }
+
+.dds{
+    display: inline-flex;
+    align-items: center;
+}
+.dds_inp{
+    margin-right: 5px;
+}
+

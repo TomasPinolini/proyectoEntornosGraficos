@@ -28,7 +28,10 @@
         <div class="row"><a class="button-link"href="menuCli/ver_promos.php">Ver Promociones</a></div>
         <div class="row"><a class="button-link"href="menuCli/usar_promo.php">Utilizar Ofertas</a></div>
         <div class="row"><a class="button-link"href="ver_novedades.php">Ver Novedades</a></div>
+    </div>
+    <div class="container text-center">
         <div class="row"><button class="button-link logout" onclick="window.location.href='logout.php'">Log out</button></div>
     </div>
+
 </body>
 </html>

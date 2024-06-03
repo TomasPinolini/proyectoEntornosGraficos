@@ -52,32 +52,40 @@
               <option value="Inicial">Inicial</option>
               <option value="Medium">Medium</option>
               <option value="Premium">Premium</option>
-            </select><br>
-            
+            </select>
           </div>
+
           <div class="row-form">
-            <label>Para qué día/s de la semana será válida:</label><br>
-            <input type="checkbox" id="lunes" name="diaDeSemana[]" value="lunes">
-            <label for="lunes">Lunes</label><br>
-            
-            <input type="checkbox" id="martes" name="diaDeSemana[]" value="martes">
-            <label for="martes">Martes</label><br>
-            
-            <input type="checkbox" id="miercoles" name="diaDeSemana[]" value="miercoles">
-            <label for="miercoles">Miércoles</label><br>
-            
-            <input type="checkbox" id="jueves" name="diaDeSemana[]" value="jueves">
-            <label for="jueves">Jueves</label><br>
-            
-            <input type="checkbox" id="viernes" name="diaDeSemana[]" value="viernes">
-            <label for="viernes">Viernes</label><br>
-            
-            <input type="checkbox" id="sabado" name="diaDeSemana[]" value="sabado">
-            <label for="sabado">Sábado</label><br>
-            
-            <input type="checkbox" id="domingo" name="diaDeSemana[]" value="domingo">
-            <label for="domingo">Domingo</label><br>
-            
+            <label>Día/s de la semana válida:</label>
+            <div class="dds">
+              <input class="dds-inp" type="checkbox" id="lunes" name="diaDeSemana[]" value="lunes">
+              <label for="lunes">Lunes</label>
+            </div>
+            <div class="dds">
+              <input class="dds-inp" type="checkbox" id="martes" name="diaDeSemana[]" value="martes">
+              <label for="martes">Martes</label>
+            </div>
+            <div class="dds">
+              <input class="dds-inp" type="checkbox" id="miercoles" name="diaDeSemana[]" value="miercoles">
+              <label for="miercoles">Miércoles</label>
+            </div>
+            <div class="dds">
+              <input class="dds-inp" type="checkbox" id="jueves" name="diaDeSemana[]" value="jueves">
+              <label for="jueves">Jueves</label>
+            </div>
+            <div class="dds">
+              <input class="dds-inp" type="checkbox" id="viernes" name="diaDeSemana[]" value="viernes">
+              <label for="viernes">Viernes</label>
+            </div>
+            <div class="dds">
+              <input class="dds-inp" type="checkbox" id="sabado" name="diaDeSemana[]" value="sabado">
+              <label for="sabado">Sábado</label>
+            </div>
+            <div class="dds">
+              <input class="dds-inp" type="checkbox" id="domingo" name="diaDeSemana[]" value="domingo">
+              <label for="domingo">Domingo</label>
+            </div>
+
           </div>
           <div class="row-form">
             <label for="type">Para que local/es será válida: </label>
@@ -93,9 +101,8 @@
       <h3>No posee locales como para programarle promociones todavía...</h3>
     <?php endif ?>
 
-    <div>
-    <button onclick="window.location.href='../MenuDueno.php'">Menu Dueno</button>
-    </div>
+    <div class="menu-btn"><button onclick="window.location.href='../MenuAdmin.php'">Menu Admin</button></div>
+
 </body>
 </html>
 <?php
