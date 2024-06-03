@@ -2,8 +2,8 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1:3306
--- Generation Time: May 31, 2024 at 11:05 PM
+-- Host: 127.0.0.1
+-- Generation Time: Jun 03, 2024 at 08:11 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -81,7 +81,10 @@ INSERT INTO `novedades` (`codNovedad`, `textoNovedad`, `fechaDesdeNovedad`, `fec
 (3, 'Primera novedad para dueños!!!', '2024-05-15', '2024-05-16', 'dueno de local'),
 (4, 'Primera novedad para administradores!!!', '2024-05-15', '2024-05-25', 'administrador'),
 (5, 'deeeee\r\n', '2024-05-16', '2024-05-31', 'dueno de local'),
-(6, 'Not medium', '2024-05-17', '2024-05-24', 'Medium');
+(6, 'Not medium', '2024-05-17', '2024-05-24', 'Medium'),
+(7, 'Primera Novedad', '2024-06-03', '2024-06-20', 'administrador'),
+(8, 'Segunda Novedad', '2024-06-03', '2024-06-14', 'administrador'),
+(9, 'Tercera', '2024-06-03', '2024-07-07', 'administrador');
 
 -- --------------------------------------------------------
 
@@ -105,31 +108,31 @@ CREATE TABLE `promociones` (
 --
 
 INSERT INTO `promociones` (`codPromo`, `textoPromo`, `fechaDesdePromo`, `fechaHastaPromo`, `categoria_cliente`, `diasSemana`, `estadoPromo`, `codLocal`) VALUES
-(61, 'Descuento en empanadas', '2024-06-01', '2024-06-30', 'Premium', '[\"Monday\", \"Tuesday\"]', 'pendiente', 12),
-(62, 'Oferta en perfumes', '2024-06-05', '2024-06-15', 'Medium', '[\"Wednesday\", \"Thursday\"]', 'pendiente', 13),
-(63, 'Descuento en ropa', '2024-06-10', '2024-06-20', 'Inicial', '[\"Friday\", \"Saturday\"]', 'pendiente', 14),
-(64, '2x1 en pizzas', '2024-06-15', '2024-06-25', 'Premium', '[\"Monday\", \"Tuesday\"]', 'pendiente', 19),
-(65, 'Descuento en fragancias', '2024-06-20', '2024-06-30', 'Medium', '[\"Wednesday\", \"Thursday\"]', 'pendiente', 21),
-(66, 'Descuento en empanadas', '2024-05-24', '2024-06-30', 'Premium', '[\"Monday\", \"Tuesday\"]', 'pendiente', 12),
-(67, 'Oferta en perfumes', '2024-05-29', '2024-06-15', 'Medium', '[\"Wednesday\", \"Thursday\"]', 'pendiente', 13),
-(68, 'Descuento en ropa', '2024-05-30', '2024-06-20', 'Inicial', '[\"Friday\", \"Saturday\"]', 'pendiente', 14),
-(69, '2x1 en pizzas', '2024-05-31', '2024-06-25', 'Premium', '[\"Monday\", \"Tuesday\"]', 'pendiente', 19),
-(70, 'Descuento en fragancias', '2024-06-03', '2024-06-30', 'Medium', '[\"Wednesday\", \"Thursday\"]', 'pendiente', 21),
-(71, 'Descuento en indumentaria urbana', '2024-05-24', '2024-06-30', 'Premium', '[\"Monday\", \"Tuesday\"]', 'pendiente', 22),
-(72, 'Promo del día: hamburguesa + gaseosa', '2024-05-29', '2024-06-15', 'Medium', '[\"Wednesday\", \"Thursday\"]', 'pendiente', 23),
-(73, 'Descuento en productos de hogar', '2024-05-30', '2024-06-20', 'Inicial', '[\"Friday\", \"Saturday\"]', 'pendiente', 24),
-(74, 'Happy hour: 2x1 en tragos', '2024-05-31', '2024-06-25', 'Premium', '[\"Monday\", \"Tuesday\"]', 'pendiente', 25),
-(75, 'Promo especial en postres', '2024-06-03', '2024-06-30', 'Medium', '[\"Wednesday\", \"Thursday\"]', 'pendiente', 26),
-(76, 'Descuento en hamburguesas gourmet', '2024-06-05', '2024-06-15', 'Inicial', '[\"Friday\", \"Saturday\"]', 'pendiente', 27),
-(77, 'Oferta en perfumes importados', '2024-06-10', '2024-06-20', 'Premium', '[\"Monday\", \"Tuesday\"]', 'pendiente', 28),
-(79, 'Liquidación de temporada en ropa', '2024-06-15', '2024-06-25', 'Medium', '[\"Wednesday\", \"Thursday\"]', 'pendiente', 23),
-(80, 'Descuento en productos para el hogar', '2024-06-20', '2024-06-30', 'Inicial', '[\"Friday\", \"Saturday\"]', 'pendiente', 24),
-(81, 'Promo de invierno: 2x1 en sopas', '2024-06-24', '2024-07-05', 'Premium', '[\"Monday\", \"Tuesday\"]', 'pendiente', 25),
-(82, 'Descuento en pizzas grandes', '2024-06-01', '2024-06-15', 'Medium', '[\"Monday\", \"Wednesday\", \"Friday\"]', 'pendiente', 19),
-(83, 'Oferta en fragancias florales', '2024-06-05', '2024-06-20', 'Inicial', '[\"Tuesday\", \"Thursday\"]', 'pendiente', 20),
-(84, 'Liquidación de jeans de moda', '2024-06-10', '2024-06-25', 'Medium', '[\"Monday\", \"Wednesday\", \"Friday\"]', 'pendiente', 21),
-(85, 'Promo especial en postres italianos', '2024-06-15', '2024-06-30', 'Premium', '[\"Tuesday\", \"Thursday\"]', 'pendiente', 22),
-(86, 'Descuento en productos de limpieza', '2024-06-20', '2024-07-05', 'Inicial', '[\"Monday\", \"Wednesday\", \"Friday\"]', 'pendiente', 26),
+(61, 'Descuento en empanadas', '2024-06-01', '2024-06-30', 'Premium', '[\"Monday\", \"Tuesday\"]', 'aprobada', 12),
+(62, 'Oferta en perfumes', '2024-06-05', '2024-06-15', 'Medium', '[\"Wednesday\", \"Thursday\"]', 'aprobada', 13),
+(63, 'Descuento en ropa', '2024-06-10', '2024-06-20', 'Inicial', '[\"Friday\", \"Saturday\"]', 'aprobada', 14),
+(64, '2x1 en pizzas', '2024-06-15', '2024-06-25', 'Premium', '[\"Monday\", \"Tuesday\"]', 'aprobada', 19),
+(65, 'Descuento en fragancias', '2024-06-20', '2024-06-30', 'Medium', '[\"Wednesday\", \"Thursday\"]', 'aprobada', 21),
+(66, 'Descuento en empanadas', '2024-05-24', '2024-06-30', 'Premium', '[\"Monday\", \"Tuesday\"]', 'aprobada', 12),
+(67, 'Oferta en perfumes', '2024-05-29', '2024-06-15', 'Medium', '[\"Wednesday\", \"Thursday\"]', 'aprobada', 13),
+(68, 'Descuento en ropa', '2024-05-30', '2024-06-20', 'Inicial', '[\"Friday\", \"Saturday\"]', 'aprobada', 14),
+(69, '2x1 en pizzas', '2024-05-31', '2024-06-25', 'Premium', '[\"Monday\", \"Tuesday\"]', 'aprobada', 19),
+(70, 'Descuento en fragancias', '2024-06-03', '2024-06-30', 'Medium', '[\"Wednesday\", \"Thursday\"]', 'aprobada', 21),
+(71, 'Descuento en indumentaria urbana', '2024-05-24', '2024-06-30', 'Premium', '[\"Monday\", \"Tuesday\"]', 'aprobada', 22),
+(72, 'Promo del día: hamburguesa + gaseosa', '2024-05-29', '2024-06-15', 'Medium', '[\"Wednesday\", \"Thursday\"]', 'aprobada', 23),
+(73, 'Descuento en productos de hogar', '2024-05-30', '2024-06-20', 'Inicial', '[\"Friday\", \"Saturday\"]', 'aprobada', 24),
+(74, 'Happy hour: 2x1 en tragos', '2024-05-31', '2024-06-25', 'Premium', '[\"Monday\", \"Tuesday\"]', 'aprobada', 25),
+(75, 'Promo especial en postres', '2024-06-03', '2024-06-30', 'Medium', '[\"Wednesday\", \"Thursday\"]', 'aprobada', 26),
+(76, 'Descuento en hamburguesas gourmet', '2024-06-05', '2024-06-15', 'Inicial', '[\"Friday\", \"Saturday\"]', 'aprobada', 27),
+(77, 'Oferta en perfumes importados', '2024-06-10', '2024-06-20', 'Premium', '[\"Monday\", \"Tuesday\"]', 'aprobada', 28),
+(79, 'Liquidación de temporada en ropa', '2024-06-15', '2024-06-25', 'Medium', '[\"Wednesday\", \"Thursday\"]', 'aprobada', 23),
+(80, 'Descuento en productos para el hogar', '2024-06-20', '2024-06-30', 'Inicial', '[\"Friday\", \"Saturday\"]', 'aprobada', 24),
+(81, 'Promo de invierno: 2x1 en sopas', '2024-06-24', '2024-07-05', 'Premium', '[\"Monday\", \"Tuesday\"]', 'aprobada', 25),
+(82, 'Descuento en pizzas grandes', '2024-06-01', '2024-06-15', 'Medium', '[\"Monday\", \"Wednesday\", \"Friday\"]', 'aprobada', 19),
+(83, 'Oferta en fragancias florales', '2024-06-05', '2024-06-20', 'Inicial', '[\"Tuesday\", \"Thursday\"]', 'aprobada', 20),
+(84, 'Liquidación de jeans de moda', '2024-06-10', '2024-06-25', 'Medium', '[\"Monday\", \"Wednesday\", \"Friday\"]', 'aprobada', 21),
+(85, 'Promo especial en postres italianos', '2024-06-15', '2024-06-30', 'Premium', '[\"Tuesday\", \"Thursday\"]', 'aprobada', 22),
+(86, 'Descuento en productos de limpieza', '2024-06-20', '2024-07-05', 'Inicial', '[\"Monday\", \"Wednesday\", \"Friday\"]', 'aprobada', 26),
 (87, 'Happy hour: 2x1 en tragos de autor', '2024-06-25', '2024-07-10', 'Medium', '[\"Thursday\", \"Saturday\"]', 'pendiente', 27),
 (88, 'Oferta en perfumes de verano', '2024-06-30', '2024-07-15', 'Premium', '[\"Tuesday\", \"Friday\"]', 'pendiente', 28),
 (89, 'Promo del día: empanadas + cerveza', '2024-07-05', '2024-07-20', 'Inicial', '[\"Monday\", \"Wednesday\", \"Friday\"]', 'pendiente', 19),
@@ -243,7 +246,7 @@ ALTER TABLE `locales`
 -- AUTO_INCREMENT for table `novedades`
 --
 ALTER TABLE `novedades`
-  MODIFY `codNovedad` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `codNovedad` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `promociones`

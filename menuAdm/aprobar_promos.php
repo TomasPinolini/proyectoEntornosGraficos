@@ -16,14 +16,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="../styles/tables.css">
-    <link rel="stylesheet" href="../styles/menues.css">
-    <link rel="stylesheet" href="../styles/forms.css">
+    <link rel="stylesheet" href="../styles/tablas.css">
+
 </head>
 <body>
     <div class="welcome">Aprobar Promos</div>
     <?php if($hayono):?>
         <form action="" method="post">
+         <div class="table-container">
             <table border='1'>
                 <tr>
                     <th>Descripción</th>
@@ -62,16 +62,16 @@
                     }
                 ?>
             </table>
-            <input type="submit" value="submit">
+            <input type="submit" value="Enviar">
+        </div>
         </form>
     <?php endif?>
     <?php if(!$hayono):?>
         <h3>No hay promociones pendientes a aprobar o denegar...</h3>
     <?php endif?>
 
-    <div>
     <button onclick="window.location.href='../MenuAdmin.php'">Menu Admin</button>
-    </div>
+
 </body>
 </html>
 <?php
