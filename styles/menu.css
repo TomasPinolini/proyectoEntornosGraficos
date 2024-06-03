@@ -1,7 +1,7 @@
 body {
   display: flex;
   flex-direction: column;
-  background-color: #001327;
+  background-color: #fff;
   margin: 0;
   padding: 0;
   overflow-y: auto;
@@ -11,7 +11,7 @@ body {
   text-align: center;
   font-size: 1.5em;
   color: #fff;
-  background-color: #007bff;
+  background-color: #333;
   padding: 10px 20px;
   font-weight: bold;
   display: flex;
@@ -40,6 +40,8 @@ body {
   justify-content: center;
   margin-bottom: 5px;
   margin-top: 5px;
+  margin-left: 5px;
+  margin-right: 5px;
   max-height: 100px;
 }
 
@@ -50,19 +52,23 @@ body {
   padding: 15px 40px;
   border-radius: 5px;
   color: #fff;
-  background-color: #003a77;
+  background-color: #505050;
   text-decoration: none;
   transition: all 0.3s ease-in-out;
+  
 }
 
 .button-link.logout {
   background-color: #dc3545;
   border: 1px solid #ddd;
+  order: 1;
+  align-self: flex-end;
 }
 
 .button-link:hover {
-  background-color: #0062cc; 
+  background-color: #8b8b8b;
   transform: scale(1.05); 
+  font-weight: bold;
 }
 
 .button-link.logout:hover {
@@ -73,5 +79,21 @@ body {
 @media (min-width: 600px) {
   .container {
       gap: 20px; /* Adjust gap for smaller screens */
+  }
+}
+
+@media (max-width: 1368px) {
+  .container {
+      flex-direction: row; 
+      flex-wrap: wrap; 
+      gap: 20px; 
+  }
+
+  .row {
+      flex-basis: 45%; 
+  }
+
+  .button-link.logout {
+      width: 200px;
   }
 }

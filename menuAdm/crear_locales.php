@@ -22,33 +22,36 @@
 </head>
 <body>
   <div class="welcome">Crear Local</div>
-    
-    <br>
-    <div class="form">
-      <form action="" method="post">
-          <label for="name">Nombre:</label>
-          <input type="text" id="name" name="name">
-          
-          <label for="location">Ubicación:</label>
-          <input type="text" id="location" name="location">
-          
-          <label for="rubro">Rubro:</label>
-          <select id="rubro" name="rubro">
-              <option value="gastronomia">Gastronomía</option>
-              <option value="indumentaria">Indumentaria</option>
-              <option value="perfumeria">Perfumería</option>
-          </select>
-          <label for="dueno">Dueño:</label>
-          <select id="dueno" name="dueno">
-              <?php echo $option;?>
-          </select>
-          
-          <input type="submit" value="Submit">
-      </form><br>
-    </div>
-    <div>
-    <button onclick="window.location.href='../MenuAdmin.php'">Menu Admin</button>
-    </div>
+  <div class="form">
+    <form action="" method="post">
+      <div class="row-form">
+        <label for="name">Nombre:</label>
+        <input type="text" id="name" name="name">
+      </div>
+      <div class="row-form">
+        <label for="location">Ubicación:</label>
+        <input type="text" id="location" name="location">
+      </div>
+      <div class="row-form">
+        <label for="rubro">Rubro:</label>
+        <select id="rubro" name="rubro">
+            <option value="gastronomia">Gastronomía</option>
+            <option value="indumentaria">Indumentaria</option>
+            <option value="perfumeria">Perfumería</option>
+        </select>
+      </div>
+      <div class="row-form">
+        <label for="dueno">Dueño:</label>
+        <select id="dueno" name="dueno">
+            <?php echo $option;?>
+        </select>
+      </div>
+      <div class="row-form">        
+        <input type="submit" value="Submit">
+      </div>
+    </form>
+  </div>
+  <div class="menu-btn"><button onclick="window.location.href='../MenuAdmin.php'">Menu Admin</button></div>
 </body>
 </html>
 <?php

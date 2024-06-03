@@ -26,66 +26,68 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="../styles/forms.css">
+    <title>Ingresar Promo</title>
 </head>
 <body>
-    <h1>INGRESAR PROMO</h1>
-    <br>
+    <div class="welcome">Ingresar Promo</div>
     <?php if(!$dont_have):?>
-      <form action="" method="POST" class="form">
-        <div class="inp">
-          <label for="descPromo">Describa la promoción: </label>
-          <input type="text" name="descPromo" id="descPromo" required />
-        </div>
-        <div class="inp">
-          <label for="fechaD">Desde que fecha será válida la oferta: </label>
-          <input type="date" name="fechaD" id="fechaD" required min="2024-05-09" value="<?php echo $today;?>"/>
-        </div>
-        <div class="inp">
-          <label for="fechaH">Hasta que fecha será válida la oferta: </label>
-          <input type="date" name="fechaH" id="fechaH" required />
-        </div>
-        <div class="inp">
-          <label for="type">Para que tipo de cliente será válida: </label>
-          <select id="tipoCli" name="tipoCli">
-            <option value="Inicial">Inicial</option>
-            <option value="Medium">Medium</option>
-            <option value="Premium">Premium</option>
-          </select><br>
-          
-        </div>
-        <div class="inp">
-          <label>Para qué día/s de la semana será válida:</label><br>
-          <input type="checkbox" id="lunes" name="diaDeSemana[]" value="lunes">
-          <label for="lunes">Lunes</label><br>
-          
-          <input type="checkbox" id="martes" name="diaDeSemana[]" value="martes">
-          <label for="martes">Martes</label><br>
-          
-          <input type="checkbox" id="miercoles" name="diaDeSemana[]" value="miercoles">
-          <label for="miercoles">Miércoles</label><br>
-          
-          <input type="checkbox" id="jueves" name="diaDeSemana[]" value="jueves">
-          <label for="jueves">Jueves</label><br>
-          
-          <input type="checkbox" id="viernes" name="diaDeSemana[]" value="viernes">
-          <label for="viernes">Viernes</label><br>
-          
-          <input type="checkbox" id="sabado" name="diaDeSemana[]" value="sabado">
-          <label for="sabado">Sábado</label><br>
-          
-          <input type="checkbox" id="domingo" name="diaDeSemana[]" value="domingo">
-          <label for="domingo">Domingo</label><br>
-          
-        </div>
-        <div class="inp">
-          <label for="type">Para que local/es será válida: </label>
-          <select name="codLocal"><?php echo $option;?></select>
-        </div>    
-        <div class="inp">
-          <input type="submit" value="submit" name="Login"/>
-        </div>
-      </form>
+      <div class="form">
+        <form action="" method="POST">
+          <div class="row-form">
+            <label for="descPromo">Describa la promoción: </label>
+            <input type="text" name="descPromo" id="descPromo" required />
+          </div>
+          <div class="row-form">
+            <label for="fechaD">Desde que fecha será válida la oferta: </label>
+            <input type="date" name="fechaD" id="fechaD" required min="2024-05-09" value="<?php echo $today;?>"/>
+          </div>
+          <div class="row-form">
+            <label for="fechaH">Hasta que fecha será válida la oferta: </label>
+            <input type="date" name="fechaH" id="fechaH" required />
+          </div>
+          <div class="row-form">
+            <label for="type">Para que tipo de cliente será válida: </label>
+            <select id="tipoCli" name="tipoCli">
+              <option value="Inicial">Inicial</option>
+              <option value="Medium">Medium</option>
+              <option value="Premium">Premium</option>
+            </select><br>
+            
+          </div>
+          <div class="row-form">
+            <label>Para qué día/s de la semana será válida:</label><br>
+            <input type="checkbox" id="lunes" name="diaDeSemana[]" value="lunes">
+            <label for="lunes">Lunes</label><br>
+            
+            <input type="checkbox" id="martes" name="diaDeSemana[]" value="martes">
+            <label for="martes">Martes</label><br>
+            
+            <input type="checkbox" id="miercoles" name="diaDeSemana[]" value="miercoles">
+            <label for="miercoles">Miércoles</label><br>
+            
+            <input type="checkbox" id="jueves" name="diaDeSemana[]" value="jueves">
+            <label for="jueves">Jueves</label><br>
+            
+            <input type="checkbox" id="viernes" name="diaDeSemana[]" value="viernes">
+            <label for="viernes">Viernes</label><br>
+            
+            <input type="checkbox" id="sabado" name="diaDeSemana[]" value="sabado">
+            <label for="sabado">Sábado</label><br>
+            
+            <input type="checkbox" id="domingo" name="diaDeSemana[]" value="domingo">
+            <label for="domingo">Domingo</label><br>
+            
+          </div>
+          <div class="row-form">
+            <label for="type">Para que local/es será válida: </label>
+            <select name="codLocal"><?php echo $option;?></select>
+          </div>    
+          <div class="row-form">
+            <input type="submit" value="submit" name="Login"/>
+          </div>
+        </form>
+      </div>
     <?php endif ?>
     <?php if($dont_have):?>
       <h3>No posee locales como para programarle promociones todavía...</h3>
