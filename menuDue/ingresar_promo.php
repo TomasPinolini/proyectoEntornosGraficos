@@ -58,31 +58,31 @@
           <div class="row-form">
             <label>Día/s de la semana válida:</label>
             <div class="dds">
-              <input class="dds-inp" type="checkbox" id="lunes" name="diaDeSemana[]" value="lunes">
+              <input class="dds-inp" type="checkbox" id="Lunes" name="diaDeSemana[]" value="lunes">
               <label for="lunes">Lunes</label>
             </div>
             <div class="dds">
-              <input class="dds-inp" type="checkbox" id="martes" name="diaDeSemana[]" value="martes">
+              <input class="dds-inp" type="checkbox" id="Martes" name="diaDeSemana[]" value="martes">
               <label for="martes">Martes</label>
             </div>
             <div class="dds">
-              <input class="dds-inp" type="checkbox" id="miercoles" name="diaDeSemana[]" value="miercoles">
+              <input class="dds-inp" type="checkbox" id="Miercoles" name="diaDeSemana[]" value="miercoles">
               <label for="miercoles">Miércoles</label>
             </div>
             <div class="dds">
-              <input class="dds-inp" type="checkbox" id="jueves" name="diaDeSemana[]" value="jueves">
+              <input class="dds-inp" type="checkbox" id="Jueves" name="diaDeSemana[]" value="jueves">
               <label for="jueves">Jueves</label>
             </div>
             <div class="dds">
-              <input class="dds-inp" type="checkbox" id="viernes" name="diaDeSemana[]" value="viernes">
+              <input class="dds-inp" type="checkbox" id="Viernes" name="diaDeSemana[]" value="viernes">
               <label for="viernes">Viernes</label>
             </div>
             <div class="dds">
-              <input class="dds-inp" type="checkbox" id="sabado" name="diaDeSemana[]" value="sabado">
+              <input class="dds-inp" type="checkbox" id="Sabado" name="diaDeSemana[]" value="sabado">
               <label for="sabado">Sábado</label>
             </div>
             <div class="dds">
-              <input class="dds-inp" type="checkbox" id="domingo" name="diaDeSemana[]" value="domingo">
+              <input class="dds-inp" type="checkbox" id="Domingo" name="diaDeSemana[]" value="domingo">
               <label for="domingo">Domingo</label>
             </div>
 
@@ -101,7 +101,7 @@
       <h3>No posee locales como para programarle promociones todavía...</h3>
     <?php endif ?>
 
-    <div class="menu-btn"><button onclick="window.location.href='../MenuAdmin.php'">Menu Admin</button></div>
+    <div class="menu-btn"><button onclick="window.location.href='../MenuDueno.php'">Menu Dueño</button></div>
 
 </body>
 </html>

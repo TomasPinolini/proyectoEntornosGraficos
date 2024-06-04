@@ -47,12 +47,12 @@ input[type="submit"]:hover {
 }
 
 button{
+    margin-top: auto; 
+    margin-bottom: 20px;
+    margin-left: 5px;
     color: #fff;
     background-color: #dc3545;
     border: 1px solid #ddd;
-    position: absolute;
-    bottom: 5px;
-    left: 5px;
     padding: 10px 30px;
     text-decoration: none;
     transition: all 0.3s ease-in-out;

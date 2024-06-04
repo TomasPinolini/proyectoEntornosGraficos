@@ -1,8 +1,9 @@
 <?php 
   include("../db.php"); 
   session_start();  
-  $ddsemana = [1 => "lunes", 2 => "martes", 3 => "miercoles", 4 => "jueves", 5 => "viernes", 6 => "sabado", 0 => "domingo"];
+  $ddsemana = [1 => "Lunes", 2 => "Martes", 3 => "Miercoles", 4 => "Jueves", 5 => "Viernes", 6 => "Sabado", 0 => "Domingo"];
   $hoy = $ddsemana[date('w')];
+//   var_dump($hoy);
   $fechahoy = date("Y-m-d");
 ?>
 
@@ -37,9 +38,10 @@
     <?php if(isset($_POST["local"])): ?>
         <form action="" method="post">
             <?php
+               $codLocal = intval($_POST["local"]);
                $sqlPromos = "SELECT * FROM promociones WHERE codLocal = ? AND categoria_cliente = ?";
                $stmt = $mysqli->prepare($sqlPromos);
-               $stmt->bind_param("ss", $_POST["local"], $_SESSION["categoria_cliente"]);
+               $stmt->bind_param("ss", $codLocal, $_SESSION["categoria_cliente"]);
                $stmt->execute();
                $result = $stmt->get_result();
                $contador = 0;
@@ -56,14 +58,12 @@
                 }   
             ?>
             <?php if($contador > 0): ?>
-            <input type="submit" value="Usar promo">
+                <input type="submit" value="Usar promo">
             <?php endif?>
         </form>
     <?php endif ?>
 
-    <br><div>
     <button onclick="window.location.href='../MenuCliente.php'">Menu Cliente</button>
-    </div>
 </body>
 </html>
 

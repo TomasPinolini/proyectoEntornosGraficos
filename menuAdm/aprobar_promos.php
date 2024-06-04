@@ -78,10 +78,10 @@
     if (mysqli_num_rows($data) > 0 and $_SERVER["REQUEST_METHOD"] == "POST") {
         foreach ($_POST as $key => $value) {
             $estado = mysqli_real_escape_string($mysqli, $value);
-            echo $value;
+            // echo $value;
             $sql = "UPDATE promociones SET estadoPromo = '$estado' WHERE codPromo = '$codPromo'";
             mysqli_query($mysqli, $sql);
         }
-        header("Location: aprobar_promos.php");
+        // header("Location: aprobar_promos.php");
     }
 ?>

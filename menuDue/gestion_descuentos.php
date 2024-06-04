@@ -13,68 +13,70 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="../styles/tablas.css">
+    <!-- <link rel="stylesheet" href="../styles/forms.css"> -->
+    <title>Gestión Descuentos</title>
 </head>
 <body>
-    <h1>GESTIÓN PROMOCIONES</h1><br>
+    <div class="welcome">Gestion Descuentos</div>
     <?php if($nohayusos):?>
-        <h3>No hay promos para aprobar...</h3>
+        <h3 style="margin: 5px;">No hay promos para aprobar...</h3>
     <?php endif ?>
     <?php if(!$nohayusos):?>
         <form action="" method="post">
-        <table border='1'>
-            <tr>
-                <th>----</th>
-                <th>Código</th>
-                <th>Cliente</th>
-                <th>Local usado</th>
-                <th>Fecha de uso</th>
-            </tr>    
+            <div class="table-container">
+                <table border='1'>
+                    <tr>
+                        <th>----</th>
+                        <th>Código</th>
+                        <th>Cliente</th>
+                        <th>Local usado</th>
+                        <th>Fecha de uso</th>
+                    </tr>    
 
-            <?php
-                foreach($usos as $uso){
-                    $usoCodCliente = $uso["codCliente"];
-                    $usoCodPromo = $uso["codPromo"];
-                    $usoFecha = $uso["fechaUsoPromo"];
-                    $usoEstado = $uso["estado"];
+                    <?php
+                        foreach($usos as $uso){
+                            $usoCodCliente = $uso["codCliente"];
+                            $usoCodPromo = $uso["codPromo"];
+                            $usoFecha = $uso["fechaUsoPromo"];
+                            $usoEstado = $uso["estado"];
 
 
-                    $sqlCliente = mysqli_query($mysqli, "SELECT nombreUsuario FROM usuarios WHERE codUsuario = '$usoCodCliente'");
-                    while ($row = $sqlCliente->fetch_assoc()) {
-                        $nombreCliente = $row["nombreUsuario"];
-                    }
-                    
-                    $sqlCodLocalPromo = mysqli_query($mysqli, "SELECT codLocal from promociones WHERE codPromo = '$usoCodPromo'");
-                    while ($row = $sqlCodLocalPromo->fetch_assoc()) {
-                        $codLocal = $row["codLocal"];
-                    }
-                    
-                    $sqlNomLocal = mysqli_query($mysqli, "SELECT * FROM locales WHERE codLocal = '$codLocal'");
-                    while ($row = $sqlNomLocal->fetch_assoc()) {
-                        $nombreLocal = $row["nombreLocal"];
-                        $codDueno = $row["codUsuario"];
-                    }
-                    if($codDueno === $_SESSION["codUsuario"] && $usoEstado === 'enviada'){
-                        echo "
-                        <tr>
-                            <td>
-                                <input type='checkbox' value='$usoCodPromo $usoCodCliente' name='usos[]'></input>
-                            </td>
-                            <td>$usoCodPromo</td>
-                            <td>$nombreCliente</td>
-                            <td>$nombreLocal</td>
-                            <td>$usoFecha</td>
-                        </tr>";
-                    }
-                }
-            ?>
-        </table>
-        <input type="submit" value="submit">
+                            $sqlCliente = mysqli_query($mysqli, "SELECT nombreUsuario FROM usuarios WHERE codUsuario = '$usoCodCliente'");
+                            while ($row = $sqlCliente->fetch_assoc()) {
+                                $nombreCliente = $row["nombreUsuario"];
+                            }
+                            
+                            $sqlCodLocalPromo = mysqli_query($mysqli, "SELECT codLocal from promociones WHERE codPromo = '$usoCodPromo'");
+                            while ($row = $sqlCodLocalPromo->fetch_assoc()) {
+                                $codLocal = $row["codLocal"];
+                            }
+                            
+                            $sqlNomLocal = mysqli_query($mysqli, "SELECT * FROM locales WHERE codLocal = '$codLocal'");
+                            while ($row = $sqlNomLocal->fetch_assoc()) {
+                                $nombreLocal = $row["nombreLocal"];
+                                $codDueno = $row["codUsuario"];
+                            }
+                            if($codDueno === $_SESSION["codUsuario"] && $usoEstado === 'enviada'){
+                                echo "
+                                <tr>
+                                    <td>
+                                        <input type='checkbox' value='$usoCodPromo $usoCodCliente' name='usos[]'></input>
+                                    </td>
+                                    <td>$usoCodPromo</td>
+                                    <td>$nombreCliente</td>
+                                    <td>$nombreLocal</td>
+                                    <td>$usoFecha</td>
+                                </tr>";
+                            }
+                        }
+                    ?>
+                </table>
+                <input type="submit" value="Enviar">
+            </div>
+        </form>
     <?php endif ?>
-    <br>
-    <div>
     <button onclick="window.location.href='../MenuDueno.php'">Menu Dueño</button>
-    </div>
 </body>
 </html>
 <?php
