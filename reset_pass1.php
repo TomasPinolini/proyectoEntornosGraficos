@@ -29,25 +29,7 @@
       </form>
     </div>
 
-    <?php if (isset($mail)): ?>    
-        <div class="form">
-            <form action="" method="post">
-            <label for="token">Token recibido:</label>
-            <input type="text" id="token" name="token" required />
-            <input type="submit" value="Submit">
-            </form>
-        </div>
 
-        <?php if (isset($token)): ?>    
-            <div class="form">
-                <form action="" method="post">
-                <label for="pass">Contraseña nueva:</label>
-                <input type="text" id="pass" name="pass" required />
-                <input type="submit" value="Submit">
-                </form>
-            </div>
-        <?php endif ?>
-    <?php endif ?>
 </body>
 </html>
 <?php
@@ -55,10 +37,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     if (isset($_POST["email"])) {
         $email = filter_input(INPUT_POST, "email");
         $given_token = generadorToken();
+        $_SESSION["given_token"] = $given_token;
+        $_SESSION["email"] = $email;
         $mail = require __DIR__ . "/mailer.php";
         $mail->setFrom("noreply@example.com");
         $mail->addAddress($email);
-        $mail->Subject = "Reiniciar contraseña";
+        $mail->Subject = "Reiniciar clave";
         $mail->Body = <<<END
                 <p>Reniciá tu contrasena.</p>
                 <p>Para verificar tu dirección de correo electrónico y cambiar tu contraseña, utiliza el siguiente código de verificación:</p>
@@ -72,24 +56,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 echo "Message could not be sent. Mailer error: {$mail->ErrorInfo}";
                 exit;
             }
-        
-    }else if (isset($_POST["token"])){
-        $token = $_POST["token"];
-        if($token == $given_token){
-            echo "<p>Token incorrecto.</p>";
-        }
-    } else if (isset($_POST["pass"])){
-        
-        $new_pass = $_POST["pass"];
-        $sql_update = "UPDATE usuarios SET claveUsuario = ? WHERE nombreUsuario = ?";
-        $stmt_update = $mysqli->prepare($sql_update);
-        $stmt_update->bind_param("ss", $email, $new_pass);
-        $stmt_update->execute();
-        $stmt_update->close();
-    
-        $mysqli->close();
-        header("Location: index.php");
-
-    } 
+            header("Location: reset_pass2.php");
+    }
 }
 ?>

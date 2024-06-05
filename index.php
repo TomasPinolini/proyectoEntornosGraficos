@@ -9,20 +9,24 @@ function generadorToken() {
 }
 $login_invalid = false;
 $validated = true;
+$error_message = '';
+$registration_error = '';
+$mysqli = require __DIR__ . "/db.php";
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     if (isset($_POST["login"])) {
-        $mysqli = require __DIR__ . "/db.php";
+        $postemail = $mysqli->real_escape_string($_POST["email"]);
+        $postpassword = $mysqli->real_escape_string($_POST["password"]);
 
-        $sql = sprintf("SELECT * FROM usuarios WHERE nombreUsuario = '%s'",
-            $mysqli->real_escape_string($_POST["email"]));
-
-        $result = $mysqli->query($sql);
+        $sql = "SELECT * FROM usuarios WHERE nombreUsuario = ?";
+        $stmt = $mysqli->prepare($sql);
+        $stmt->bind_param("s", $postemail);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        
         if ($result && $result->num_rows > 0) {
             $user = $result->fetch_assoc();
-            if ($_POST["password"] === $user["claveUsuario"] && 
-                $_POST["email"] === $user["nombreUsuario"] && 
-                $user["token_activation"] === null) {
+            if ($postpassword === $user["claveUsuario"] && $user["token_activation"] === null) {
                 $_SESSION = $user;
                 switch ($user["tipoUsuario"]) {
                     case "administrador":
@@ -36,16 +40,20 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                         break;
                 }
                 exit;
-            } else if (isset($user["token_activation"])) {
+            } elseif ($user["token_activation"] !== null) {
                 $validated = false;
-            }        
-        }else{
+                $error_message = "Confirme el registro antes de ingresar.";
+            } else {
+                $login_invalid = true;
+                $error_message = "Usuario o contraseña incorrecto, intente de nuevo.";
+            }
+        } else {
             $login_invalid = true;
+            $error_message = "Usuario o contraseña incorrecto, intente de nuevo.";
         }
     } elseif (isset($_POST["register"])) {
-        // Registration process
         if ($_POST["password"] !== $_POST["password_conf"]) {
-            die("Las contraseñas no coinciden.");
+            $registration_error = "Las contraseñas no coinciden.";
         }
 
         $email = filter_input(INPUT_POST, "email");
@@ -131,7 +139,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         <div class="form sign-in">
             <h2>Bienvenido!</h2>
             <?php if ($login_invalid): ?>
-                <br><em>Usuario o contraseña incorrecto, intente de nuevo.</em>
+                <br><em><?php echo $error_message; ?></em><br>
             <?php endif ?>
             <?php if (!$validated): ?>
                 <br><em>Confirme el registro antes de ingresar.</em><br>
@@ -145,7 +153,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     <span>Contraseña</span>
                     <input type="password" name="password" required />
                 </label>
-                <p class="forgot-pass"><a href="reset_pass.php">Olvido su contraseña?</a></p>
+                <p class="forgot-pass"><a href="reset_pass1.php">Olvido su contraseña?</a></p>
                 <input type="submit" name="login" class="submit" value="Sign In">
             </form>
         </div>
@@ -165,6 +173,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             </div>
             <div class="form sign-up" style="display:none;">
                 <h2>Cree su cuenta</h2>
+                <?php if ($registration_error): ?>
+                    <br><em><?php echo $registration_error; ?></em><br>
+                <?php endif ?>
                 <form action="" method="POST">
                     <label>
                         <span>Email</span>
