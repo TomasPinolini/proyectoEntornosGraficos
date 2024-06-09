@@ -3,7 +3,7 @@
   session_start();  
   $ddsemana = [1 => "Lunes", 2 => "Martes", 3 => "Miercoles", 4 => "Jueves", 5 => "Viernes", 6 => "Sabado", 0 => "Domingo"];
   $hoy = $ddsemana[date('w')];
-  var_dump($_SESSION);
+//   var_dump($_SESSION);
   $fechahoy = date("Y-m-d");
   $fechaHace6m = date("Y-m-d", strtotime("-6 months"));
 
@@ -114,7 +114,6 @@
         }
         
     }
-
     $sqlCuentaUsos = "SELECT * FROM usos_promociones";
     $usos = mysqli_query($mysqli, $sqlCuentaUsos);
     $contadorUsosT = 0;
@@ -140,8 +139,6 @@
         $stmt->bind_param("ss", $categoria, $_SESSION["codUsuario"]);
         $stmt -> execute();
         $_SESSION["categoria_cliente"] = $categoria;
-
-
     }
 
 ?>

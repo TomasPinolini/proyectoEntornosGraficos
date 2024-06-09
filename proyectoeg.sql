@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 09, 2024 at 04:58 PM
+-- Generation Time: Jun 09, 2024 at 06:39 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -40,8 +40,6 @@ CREATE TABLE `locales` (
 --
 
 INSERT INTO `locales` (`codLocal`, `nombreLocal`, `ubicacionLocal`, `rubroLocal`, `codUsuario`) VALUES
-(12, 'Empanadas Rosario', 'Calle Córdoba 1234, Rosario, Santa Fe', 'gastronomia', 55),
-(14, 'Moda Urbana', 'Boulevard Oroño 910, Rosario, Santa Fe', 'indumentaria', 62),
 (15, 'Delicias del Centro', 'Calle San Martín 345, Rosario, Santa Fe', 'gastronomia', 10),
 (16, 'Estilo y Elegancia', 'Calle Santa Fe 6789, Rosario, Santa Fe', 'indumentaria', 19),
 (17, 'Aromas de Rosario', 'Avenida Alberdi 123, Rosario, Santa Fe', 'perfumeria', 20),
@@ -108,10 +106,7 @@ CREATE TABLE `promociones` (
 
 INSERT INTO `promociones` (`codPromo`, `textoPromo`, `fechaDesdePromo`, `fechaHastaPromo`, `categoria_cliente`, `diasSemana`, `estadoPromo`, `codLocal`) VALUES
 (61, 'Descuento en empanadas', '2024-06-08', '2024-06-30', 'Premium', '[\"Lunes\", \"Martes\", \"Miércoles\", \"Jueves\", \"Viernes\", \"Sábado\", \"Domingo\"]', 'aprobada', 16),
-(63, 'Descuento en ropa', '2024-06-08', '2024-06-20', 'Inicial', '[\"Lunes\", \"Martes\", \"Miércoles\", \"Jueves\", \"Viernes\", \"Sábado\", \"Domingo\"]', 'aprobada', 14),
 (65, 'Descuento en fragancias', '2024-06-08', '2024-06-30', 'Medium', '[\"Lunes\", \"Martes\", \"Miércoles\", \"Jueves\", \"Viernes\", \"Sábado\", \"Domingo\"]', 'aprobada', 21),
-(66, 'Descuento en empanadas', '2024-06-08', '2024-06-30', 'Premium', '[\"Lunes\", \"Martes\", \"Miércoles\", \"Jueves\", \"Viernes\", \"Sábado\", \"Domingo\"]', 'aprobada', 12),
-(68, 'Descuento en ropa', '2024-06-08', '2024-06-20', 'Inicial', '[\"Lunes\", \"Martes\", \"Miércoles\", \"Jueves\", \"Viernes\", \"Sábado\", \"Domingo\"]', 'aprobada', 14),
 (69, '2x1 en pizzas', '2024-06-08', '2024-06-25', 'Premium', '[\"Lunes\", \"Martes\", \"Miércoles\", \"Jueves\", \"Viernes\", \"Sábado\", \"Domingo\"]', 'aprobada', 19),
 (70, 'Descuento en fragancias', '2024-06-08', '2024-06-30', 'Medium', '[\"Lunes\", \"Martes\", \"Miércoles\", \"Jueves\", \"Viernes\", \"Sábado\", \"Domingo\"]', 'aprobada', 21),
 (71, 'Descuento en indumentaria urbana', '2024-06-08', '2024-06-30', 'Premium', '[\"Lunes\", \"Martes\", \"Miércoles\", \"Jueves\", \"Viernes\", \"Sábado\", \"Domingo\"]', 'aprobada', 22),
@@ -134,8 +129,7 @@ INSERT INTO `promociones` (`codPromo`, `textoPromo`, `fechaDesdePromo`, `fechaHa
 (89, 'Promo del día: empanadas + cerveza', '2024-06-08', '2024-07-20', 'Inicial', '[\"Lunes\", \"Martes\", \"Miércoles\", \"Jueves\", \"Viernes\", \"Sábado\", \"Domingo\"]', 'pendiente', 19),
 (90, 'Descuento en vestidos de noche', '2024-06-08', '2024-07-25', 'Medium', '[\"Lunes\", \"Martes\", \"Miércoles\", \"Jueves\", \"Viernes\", \"Sábado\", \"Domingo\"]', 'pendiente', 20),
 (91, 'Liquidación de fragancias masculinas', '2024-06-08', '2024-07-30', 'Premium', '[\"Lunes\", \"Martes\", \"Miércoles\", \"Jueves\", \"Viernes\", \"Sábado\", \"Domingo\"]', 'aprobada', 21),
-(92, 'Descuento empanadas 2', '2024-06-08', '2024-06-30', 'Premium', '[\"Lunes\",\"Martes\",\"Jueves\",\"Viernes\"]', 'aprobada', 16),
-(93, 'Descuento en ropa 2', '2024-06-08', '2024-06-20', 'Inicial', '[\"Lunes\", \"Martes\", \"Miércoles\", \"Jueves\", \"Viernes\", \"Sábado\", \"Domingo\"]', 'aprobada', 14);
+(92, 'Descuento empanadas 2', '2024-06-08', '2024-06-30', 'Premium', '[\"Lunes\",\"Martes\",\"Jueves\",\"Viernes\"]', 'aprobada', 16);
 
 -- --------------------------------------------------------
 
@@ -155,8 +149,12 @@ CREATE TABLE `usos_promociones` (
 --
 
 INSERT INTO `usos_promociones` (`codCliente`, `codPromo`, `fechaUsoPromo`, `estado`) VALUES
-(11, 61, '2024-06-04', 'aceptada'),
-(11, 92, '2024-06-04', 'aceptada');
+(67, 89, '2024-09-06', 'enviada'),
+(67, 73, '2024-09-06', 'enviada'),
+(67, 80, '2024-09-06', 'enviada'),
+(67, 83, '2024-09-06', 'enviada'),
+(67, 76, '2024-09-06', 'enviada'),
+(67, 86, '2024-09-06', 'enviada');
 
 -- --------------------------------------------------------
 
@@ -179,23 +177,14 @@ CREATE TABLE `usuarios` (
 
 INSERT INTO `usuarios` (`codUsuario`, `nombreUsuario`, `claveUsuario`, `tipoUsuario`, `categoria_cliente`, `token_activation`) VALUES
 (10, 'tomdueno@gmail.com', '123', 'dueno de local', '', NULL),
-(11, 'tomcliente@gmail.com', '123', 'cliente', 'Premium', NULL),
 (19, 'tomduenito@gmail.com', '123', 'dueno de local', '', NULL),
 (20, 'tomduenaso@gmail.com', '123', 'dueno de local', '', NULL),
 (21, 'tomduenotoken@gmail.com', '123', 'dueno de local', '', NULL),
-(22, 'tomclientetoken@gmail.com', '123', 'cliente', 'Inicial', NULL),
 (41, 'tomadmin@gmail.com', '123', 'administrador', '', NULL),
-(50, 'tomprue@gmail.com', '123', 'cliente', 'Inicial', '2c4xkz'),
-(52, 'tomaspinolini2003@gmail.com', '321', 'cliente', 'Inicial', NULL),
-(53, 'alice.smith@example.com', 'pass123', 'cliente', 'Inicial', NULL),
-(54, 'bob.jones@example.com', 'pass123', 'cliente', 'Medium', NULL),
-(55, 'carol.wilson@example.com', 'pass123', 'cliente', 'Premium', NULL),
 (56, 'dave.brown@example.com', 'pass123', 'dueno de local', '', NULL),
 (57, 'eve.davis@example.com', 'pass123', 'dueno de local', '', NULL),
 (58, 'frank.miller@example.com', 'pass123', 'dueno de local', '', NULL),
-(61, 'irene.anderson@example.com', 'pass123', 'cliente', 'Inicial', NULL),
-(62, 'jack.thomas@example.com', 'pass123', 'cliente', 'Medium', NULL),
-(63, 'lupinolini@gmail.com', '233', 'cliente', 'Inicial', 'R966tG');
+(67, 'tomaspinolini2003@gmail.com', '123', 'cliente', 'Premium', NULL);
 
 --
 -- Indexes for dumped tables
@@ -263,7 +252,7 @@ ALTER TABLE `promociones`
 -- AUTO_INCREMENT for table `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `codUsuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
+  MODIFY `codUsuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
 
 --
 -- Constraints for dumped tables
