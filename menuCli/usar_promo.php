@@ -3,9 +3,10 @@
   session_start();  
   $ddsemana = [1 => "Lunes", 2 => "Martes", 3 => "Miercoles", 4 => "Jueves", 5 => "Viernes", 6 => "Sabado", 0 => "Domingo"];
   $hoy = $ddsemana[date('w')];
-//   var_dump($_SESSION);
+  var_dump($_SESSION);
   $fechahoy = date("Y-m-d");
   $fechaHace6m = date("Y-m-d", strtotime("-6 months"));
+
 ?>
 
 <!DOCTYPE html>
@@ -96,7 +97,6 @@
             </form>
         </div>
     <?php endif ?>
-
     <button onclick="window.location.href='../MenuCliente.php'">Menu Cliente</button>
 </body>
 </html>
@@ -112,31 +112,34 @@
             $stmt->bind_param("sss", $_SESSION["codUsuario"], $promo, $today);
             $stmt -> execute();
         }
-    
-        $sqlCuentaUsos = "SELECT * FROM usos_promociones";
-        $usos = mysqli_query($mysqli, $sqlCuentaUsos);
-        $contador = 0;
-        foreach($usos as $uso){
-            if($uso["codCliente"] === $_SESSION["codUsuario"] && $uso["fechaUsoPromo"] >> $fechaHace6m){
-                $contador++;
-            }
-        }
+        
+    }
 
-        if($contador > 5){
-            $categoria = "Premium";
-            $sqlCatCliente = "UPDATE usuarios set categoria_cliente = ? WHERE codUsuario = ?"; 
-            $stmt = $mysqli->stmt_init();
-            $stmt->prepare($sqlCatCliente);
-            $stmt->bind_param("ss", $categoria, $_SESSION["codUsuario"]);
-            $stmt -> execute();
-        }else if($contador > 3){
-            $categoria = "Medium";
-            $sqlCatCliente = "UPDATE usuarios set categoria_cliente = ? WHERE codUsuario = ?"; 
-            $stmt = $mysqli->stmt_init();
-            $stmt->prepare($sqlCatCliente);
-            $stmt->bind_param("ss", $categoria, $_SESSION["codUsuario"]);
-            $stmt -> execute();
+    $sqlCuentaUsos = "SELECT * FROM usos_promociones";
+    $usos = mysqli_query($mysqli, $sqlCuentaUsos);
+    $contadorUsosT = 0;
+    foreach($usos as $uso){
+        if(intval($uso["codCliente"]) === $_SESSION["codUsuario"] && $uso["fechaUsoPromo"] > $fechaHace6m){
+            $contadorUsosT++;
         }
+    }
+
+    if($contadorUsosT > 5){
+        $categoria = "Premium";
+        $sqlCatCliente = "UPDATE usuarios set categoria_cliente = ? WHERE codUsuario = ?"; 
+        $stmt = $mysqli->stmt_init();
+        $stmt->prepare($sqlCatCliente);
+        $stmt->bind_param("ss", $categoria, $_SESSION["codUsuario"]);
+        $stmt -> execute();
+        $_SESSION["categoria_cliente"] = $categoria;
+    }else if($contadorUsosT > 3){
+        $categoria = "Medium";
+        $sqlCatCliente = "UPDATE usuarios set categoria_cliente = ? WHERE codUsuario = ?"; 
+        $stmt = $mysqli->stmt_init();
+        $stmt->prepare($sqlCatCliente);
+        $stmt->bind_param("ss", $categoria, $_SESSION["codUsuario"]);
+        $stmt -> execute();
+        $_SESSION["categoria_cliente"] = $categoria;
 
 
     }
