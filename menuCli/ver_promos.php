@@ -21,7 +21,7 @@
     <title>Ver Promociones</title>
 </head>
 <body>
-    <div class="welcome">Ver Promociones</div><br>
+    <div class="welcome"><img src="../UTN_logo.png" alt="" class="logoutn">Ver Promociones</div><br>
     <div class="table-container">
         <?php if($nohaypromos):?>
             <h3>No hay promos aprobadas para mostrar...</h3>

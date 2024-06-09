@@ -23,7 +23,8 @@
     <link rel="stylesheet" href="styles/menu.css">
 </head>
 <body>
-    <div class="welcome">Bienvenido <?= htmlspecialchars($mailUsuario) ?>!</div>
+    <div class="welcome"><img src="UTN_logo.png" alt="" class="logoutn">Bienvenido <?= htmlspecialchars($mailUsuario) ?>!</div>
+    <img src="UTN_logo.jpg" alt="" class="logoutn">
     <div class="container text-center">
         <div class="row"><a class="button-link"href="menuCli/ver_promos.php">Ver Promociones</a></div>
         <div class="row"><a class="button-link"href="menuCli/usar_promo.php">Utilizar Ofertas</a></div>

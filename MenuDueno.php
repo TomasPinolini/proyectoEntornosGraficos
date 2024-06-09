@@ -22,7 +22,8 @@
 </head>
 <body>
     
-    <div class="welcome">Bienvenido <?= htmlspecialchars($mailUsuario) ?>!</div>
+    <div class="welcome"><img src="UTN_logo.png" alt="" class="logoutn">Bienvenido <?= htmlspecialchars($mailUsuario) ?>!</div>
+    <img src="UTN_logo.jpg" alt="" class="logoutn">
     <div class="container text-center">
         <div class="row"><a class="button-link" href="menuDue/ingresar_promo.php">Ingresar Promo</a></div>
         <div class="row"><a class="button-link" href="menuDue/gestion_descuentos.php">Gestion Descuentos</a></div>

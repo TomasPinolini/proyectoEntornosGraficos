@@ -10,11 +10,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../styles/tablas.css">
-    
     <title>Usos Descuentos</title>
 </head>
 <body>
-    <div class="welcome">Usos Promociones</div>
+    <div class="welcome"><img src="../UTN_logo.png" alt="" class="logoutn">Usos Promociones</div>
     <div class="table-container">
         <table border='1'>
             <tr>

@@ -18,7 +18,7 @@
     <title>Usar Promocion</title>
 </head>
 <body>
-    <div class="welcome">Usar Promociones</div><br>
+    <div class="welcome"><img src="../UTN_logo.png" alt="" class="logoutn">Usar Promociones</div><br>
     <div class="table-container">
     <form action="" method="POST">
         <select name="local" id="local">

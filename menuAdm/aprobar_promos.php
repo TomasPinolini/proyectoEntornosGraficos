@@ -15,12 +15,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Aprobar Promociones</title>
     <link rel="stylesheet" href="../styles/tablas.css">
 
 </head>
 <body>
-    <div class="welcome">Aprobar Promos</div>
+    <div class="welcome"><img src="../UTN_logo.png" alt="" class="logoutn">Aprobar Promos</div>
     <?php if($hayono):?>
         <form action="" method="post">
          <div class="table-container">

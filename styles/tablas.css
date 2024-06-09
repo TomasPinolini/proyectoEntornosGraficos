@@ -12,6 +12,13 @@
     max-height: 80px;
 }
 
+ .logoutn {
+  height: calc(20% - 30px);
+  max-height: 56px;
+  position: absolute;
+  left: 1%;
+}
+
 .table-container {
     display: flex;
     align-items: center;

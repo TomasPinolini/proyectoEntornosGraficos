@@ -18,7 +18,7 @@
     <title>Document</title>
 </head>
 <body>
-    <div class="welcome">Ver Novedades</div>    
+    <div class="welcome"><img src="UTN_logo.png" alt="" class="logoutn">Ver Novedades</div>    
     <div class="table-container">
         <h3>Novedades:</h3>
         <table>

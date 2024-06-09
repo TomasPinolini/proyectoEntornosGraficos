@@ -16,6 +16,16 @@ body {
     margin: 0; 
 }
 
+.logoutn {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 30%;
+    height: 30%;
+    max-width: 200px;
+    max-height: 200px;
+}
+
 input,
 button {
     border: none;

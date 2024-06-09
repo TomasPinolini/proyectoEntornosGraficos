@@ -13,7 +13,7 @@
     <title>Usos Promociones</title>
 </head>
 <body>
-    <div class="welcome">Usos Promociones</div>
+    <div class="welcome"><img src="../UTN_logo.png" alt="" class="logoutn">Usos Promociones</div>
     <div class="table-container">
         <table border='1'>
             <tr>

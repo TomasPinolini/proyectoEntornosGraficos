@@ -11,7 +11,14 @@
     height: calc(20% - 20px);
     max-height: 80px;
 }
-
+ 
+  .logoutn {
+    height: calc(20% - 30px);
+    max-height: 56px;
+    position: absolute;
+    left: 1%;
+  }
+  
 .form{
     width: 100%;
     /* padding: 2% 3%; */

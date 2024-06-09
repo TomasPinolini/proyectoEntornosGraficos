@@ -135,6 +135,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <title>Index</title>
 </head>
 <body>
+    <img src="UTN_logo.jpg" alt="" class="logoutn">
     <div class="cont">
         <div class="form sign-in">
             <h2>Bienvenido!</h2>

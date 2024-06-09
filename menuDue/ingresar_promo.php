@@ -30,7 +30,7 @@
     <title>Ingresar Promo</title>
 </head>
 <body>
-    <div class="welcome">Ingresar Promo</div>
+    <div class="welcome"><img src="../UTN_logo.png" alt="" class="logoutn">Ingresar Promo</div>
     <?php if(!$dont_have):?>
       <div class="form">
         <form action="" method="POST">

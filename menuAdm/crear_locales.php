@@ -15,13 +15,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Crear Locales</title>
     <link rel="stylesheet" href="../styles/tables.css">
     <link rel="stylesheet" href="../styles/menues.css">
     <link rel="stylesheet" href="../styles/forms.css">
 </head>
 <body>
-  <div class="welcome">Crear Local</div>
+  <div class="welcome"><img src="../UTN_logo.png" alt="" class="logoutn">Crear Local</div>
   <div class="form">
     <form action="" method="post">
       <div class="row-form">

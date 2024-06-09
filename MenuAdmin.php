@@ -23,7 +23,7 @@
 
 </head>
 <body>
-    <div class="welcome">Bienvenido <?= htmlspecialchars($mailUsuario) ?>!</div>
+    <div class="welcome"><img src="UTN_logo.png" alt="" class="logoutn">Bienvenido <?= htmlspecialchars($mailUsuario) ?>!</div>
     <div class="container text-center">
         <div class="row"><a class="button-link" href="menuAdm/crear_locales.php">Crear Locales</a></div>
         <div class="row"><a class="button-link" href="menuAdm/aprobar_duenos.php">Aprobar Dueños</a></div>

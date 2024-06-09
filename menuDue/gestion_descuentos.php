@@ -14,11 +14,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../styles/tablas.css">
-    <!-- <link rel="stylesheet" href="../styles/forms.css"> -->
     <title>Gestión Descuentos</title>
 </head>
 <body>
-    <div class="welcome">Gestion Descuentos</div>
+    <div class="welcome"><img src="../UTN_logo.png" alt="" class="logoutn">Gestion Descuentos</div>
     <?php if($nohayusos):?>
         <h3 style="margin: 5px;">No hay promos para aprobar...</h3>
     <?php endif ?>
