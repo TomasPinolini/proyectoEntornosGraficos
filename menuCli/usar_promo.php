@@ -5,6 +5,7 @@
   $hoy = $ddsemana[date('w')];
 //   var_dump($_SESSION);
   $fechahoy = date("Y-m-d");
+  $fechaHace6m = date("Y-m-d", strtotime("-6 months"));
 ?>
 
 <!DOCTYPE html>
@@ -67,7 +68,18 @@
                             $dds = $promo["diasSemana"];
                             $fechaDesdePromo = $promo["fechaDesdePromo"];
                             $fechaHastaPromo = $promo["fechaHastaPromo"];
-                            if(strpos($dds, $hoy) !== false && $fechaDesdePromo <= $fechahoy && $fechaHastaPromo >= $fechahoy ){
+                            $sqlCuentaUsos = "SELECT * FROM usos_promociones";
+                            $usos = mysqli_query($mysqli, $sqlCuentaUsos);
+                            $contadorUsos = 0;
+                            foreach($usos as $uso){
+                                if(intval($uso["codCliente"]) === $_SESSION["codUsuario"] && intval($uso["codPromo"]) === $codPromo){
+                                    $contadorUsos++;
+                                }
+                            }
+                            if(strpos($dds, $hoy) !== false && 
+                            $fechaDesdePromo <= $fechahoy && 
+                            $fechaHastaPromo >= $fechahoy && 
+                            $contadorUsos == 0){
                                 $contador++;
                                 echo "<div style='display: flex; align-items: center; width: 100%;'>
                                 <input type='checkbox' id='promo_$codPromo' name='promos[]' value='$codPromo'>
@@ -101,11 +113,11 @@
             $stmt -> execute();
         }
     
-        $sqlCuentaUsos = "SELECT codCliente FROM usos_promociones";
+        $sqlCuentaUsos = "SELECT * FROM usos_promociones";
         $usos = mysqli_query($mysqli, $sqlCuentaUsos);
         $contador = 0;
         foreach($usos as $uso){
-            if($uso["codCliente"] === $_SESSION["codUsuario"]){
+            if($uso["codCliente"] === $_SESSION["codUsuario"] && $uso["fechaUsoPromo"] >> $fechaHace6m){
                 $contador++;
             }
         }

@@ -14,7 +14,7 @@ include("db.php");
     <link rel="stylesheet" href="styles/forms.css">
     <title>Login-Register</title>
 </head>
-<body>
+<body style="margin: 3%;">
     <h2>Enter Your 6-Digit Token</h2>
         <form action="" method="POST">
             <label for="token">Token:</label>
