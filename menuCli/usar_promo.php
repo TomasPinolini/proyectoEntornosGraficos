@@ -3,7 +3,7 @@
   session_start();  
   $ddsemana = [1 => "Lunes", 2 => "Martes", 3 => "Miercoles", 4 => "Jueves", 5 => "Viernes", 6 => "Sabado", 0 => "Domingo"];
   $hoy = $ddsemana[date('w')];
-//   var_dump($hoy);
+//   var_dump($_SESSION);
   $fechahoy = date("Y-m-d");
 ?>
 
@@ -20,47 +20,69 @@
 <body>
     <div class="welcome"><img src="../UTN_logo.png" alt="" class="logoutn">Usar Promociones</div><br>
     <div class="table-container">
-    <form action="" method="POST">
-        <select name="local" id="local">
-            <option value='' selected disabled>Seleccione:</option>
-            <?php
-                $sqlLocales = "SELECT * FROM locales";
-                $locales = mysqli_query($mysqli, $sqlLocales);
-                while($local = mysqli_fetch_array($locales)){
-                    $codLocal = $local["codLocal"];
-                    $nombreLocal = $local["nombreLocal"];
-                    echo "<option value='$codLocal'>$nombreLocal</option>";
-                }
-            ?>
-        </select>
-        <input type="submit" value="Buscar promociones">
-    </form>
+        <div class="form-container">
+            <form action="" method="POST">
+                <select name="local" id="local">
+                    <option value='' selected disabled>Seleccione:</option>
+                    <?php
+                        $sqlLocales = "SELECT * FROM locales";
+                        $locales = mysqli_query($mysqli, $sqlLocales);
+                        while($local = mysqli_fetch_array($locales)){
+                            $codLocal = $local["codLocal"];
+                            $nombreLocal = $local["nombreLocal"];
+                            echo "<option value='$codLocal'>$nombreLocal</option>";
+                        }
+                    ?>
+                </select>
+                <input type="submit" value="Buscar promociones">
+            </form>
+        </div>
     <?php if(isset($_POST["local"])): ?>
-        <form action="" method="post">
-            <?php
-               $codLocal = intval($_POST["local"]);
-               $sqlPromos = "SELECT * FROM promociones WHERE codLocal = ? AND categoria_cliente = ?";
-               $stmt = $mysqli->prepare($sqlPromos);
-               $stmt->bind_param("ss", $codLocal, $_SESSION["categoria_cliente"]);
-               $stmt->execute();
-               $result = $stmt->get_result();
-               $contador = 0;
-               while ($promo = $result->fetch_assoc()) {
-                    $codPromo = $promo["codPromo"];
-                    $desc = $promo["textoPromo"];
-                    $dds = $promo["diasSemana"];
-                    $fechaDesdePromo = $promo["fechaDesdePromo"];
-                    $fechaHastaPromo = $promo["fechaHastaPromo"];
-                    if(strpos($dds, $hoy) !== false && $fechaDesdePromo <= $fechahoy && $fechaHastaPromo >= $fechahoy ){
-                        $contador++;
-                        echo "<input type='checkbox' name='promos[]' value='$codPromo'>$desc</input><br>";
-                    }
-                }   
-            ?>
-            <?php if($contador > 0): ?>
-                <input type="submit" value="Usar promo">
-            <?php endif?>
-        </form>
+        <div class="form-container">
+            <form action="" method="POST">
+                <?php
+                $cats = ["Inicial", "Medium", "Premium"];
+                $codLocal = intval($_POST["local"]);
+                switch($_SESSION["categoria_cliente"]){
+                    case "Inicial":
+                        $it = 1;
+                        break;
+                    case "Medium":
+                        $it = 2;
+                        break;
+                    case "Premium":
+                        $it = 3;
+                        break;
+                }
+                for($i = 0; $i < $it; $i++){
+                        $sqlPromos = "SELECT * FROM promociones WHERE codLocal = ? AND categoria_cliente = ?";
+                        $stmt = $mysqli->prepare($sqlPromos);
+                        $stmt->bind_param("ss", $codLocal, $cats[$i]);
+                        $stmt->execute();
+                        $result = $stmt->get_result();
+                        $contador = 0;
+                        while ($promo = $result->fetch_assoc()) {
+                            $codPromo = $promo["codPromo"];
+                            $desc = $promo["textoPromo"];
+                            $dds = $promo["diasSemana"];
+                            $fechaDesdePromo = $promo["fechaDesdePromo"];
+                            $fechaHastaPromo = $promo["fechaHastaPromo"];
+                            if(strpos($dds, $hoy) !== false && $fechaDesdePromo <= $fechahoy && $fechaHastaPromo >= $fechahoy ){
+                                $contador++;
+                                echo "<div style='display: flex; align-items: center; width: 100%;'>
+                                <input type='checkbox' id='promo_$codPromo' name='promos[]' value='$codPromo'>
+                                <label for='promo_$codPromo'>$desc</label>
+                            </div><br>";
+                            }
+                    }   
+                }
+
+                ?>
+                <?php if($contador > 0): ?>
+                    <input type="submit" value="Usar promo">
+                <?php endif?>
+            </form>
+        </div>
     <?php endif ?>
 
     <button onclick="window.location.href='../MenuCliente.php'">Menu Cliente</button>
