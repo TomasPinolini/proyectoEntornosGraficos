@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 03, 2024 at 08:11 PM
+-- Generation Time: Jun 09, 2024 at 04:58 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -41,7 +41,6 @@ CREATE TABLE `locales` (
 
 INSERT INTO `locales` (`codLocal`, `nombreLocal`, `ubicacionLocal`, `rubroLocal`, `codUsuario`) VALUES
 (12, 'Empanadas Rosario', 'Calle Córdoba 1234, Rosario, Santa Fe', 'gastronomia', 55),
-(13, 'Perfumería Bella', 'Avenida Pellegrini 5678, Rosario, Santa Fe', 'perfumeria', 59),
 (14, 'Moda Urbana', 'Boulevard Oroño 910, Rosario, Santa Fe', 'indumentaria', 62),
 (15, 'Delicias del Centro', 'Calle San Martín 345, Rosario, Santa Fe', 'gastronomia', 10),
 (16, 'Estilo y Elegancia', 'Calle Santa Fe 6789, Rosario, Santa Fe', 'indumentaria', 19),
@@ -108,36 +107,35 @@ CREATE TABLE `promociones` (
 --
 
 INSERT INTO `promociones` (`codPromo`, `textoPromo`, `fechaDesdePromo`, `fechaHastaPromo`, `categoria_cliente`, `diasSemana`, `estadoPromo`, `codLocal`) VALUES
-(61, 'Descuento en empanadas', '2024-06-01', '2024-06-30', 'Premium', '[\"Monday\", \"Tuesday\"]', 'aprobada', 12),
-(62, 'Oferta en perfumes', '2024-06-05', '2024-06-15', 'Medium', '[\"Wednesday\", \"Thursday\"]', 'aprobada', 13),
-(63, 'Descuento en ropa', '2024-06-10', '2024-06-20', 'Inicial', '[\"Friday\", \"Saturday\"]', 'aprobada', 14),
-(64, '2x1 en pizzas', '2024-06-15', '2024-06-25', 'Premium', '[\"Monday\", \"Tuesday\"]', 'aprobada', 19),
-(65, 'Descuento en fragancias', '2024-06-20', '2024-06-30', 'Medium', '[\"Wednesday\", \"Thursday\"]', 'aprobada', 21),
-(66, 'Descuento en empanadas', '2024-05-24', '2024-06-30', 'Premium', '[\"Monday\", \"Tuesday\"]', 'aprobada', 12),
-(67, 'Oferta en perfumes', '2024-05-29', '2024-06-15', 'Medium', '[\"Wednesday\", \"Thursday\"]', 'aprobada', 13),
-(68, 'Descuento en ropa', '2024-05-30', '2024-06-20', 'Inicial', '[\"Friday\", \"Saturday\"]', 'aprobada', 14),
-(69, '2x1 en pizzas', '2024-05-31', '2024-06-25', 'Premium', '[\"Monday\", \"Tuesday\"]', 'aprobada', 19),
-(70, 'Descuento en fragancias', '2024-06-03', '2024-06-30', 'Medium', '[\"Wednesday\", \"Thursday\"]', 'aprobada', 21),
-(71, 'Descuento en indumentaria urbana', '2024-05-24', '2024-06-30', 'Premium', '[\"Monday\", \"Tuesday\"]', 'aprobada', 22),
-(72, 'Promo del día: hamburguesa + gaseosa', '2024-05-29', '2024-06-15', 'Medium', '[\"Wednesday\", \"Thursday\"]', 'aprobada', 23),
-(73, 'Descuento en productos de hogar', '2024-05-30', '2024-06-20', 'Inicial', '[\"Friday\", \"Saturday\"]', 'aprobada', 24),
-(74, 'Happy hour: 2x1 en tragos', '2024-05-31', '2024-06-25', 'Premium', '[\"Monday\", \"Tuesday\"]', 'aprobada', 25),
-(75, 'Promo especial en postres', '2024-06-03', '2024-06-30', 'Medium', '[\"Wednesday\", \"Thursday\"]', 'aprobada', 26),
-(76, 'Descuento en hamburguesas gourmet', '2024-06-05', '2024-06-15', 'Inicial', '[\"Friday\", \"Saturday\"]', 'aprobada', 27),
-(77, 'Oferta en perfumes importados', '2024-06-10', '2024-06-20', 'Premium', '[\"Monday\", \"Tuesday\"]', 'aprobada', 28),
-(79, 'Liquidación de temporada en ropa', '2024-06-15', '2024-06-25', 'Medium', '[\"Wednesday\", \"Thursday\"]', 'aprobada', 23),
-(80, 'Descuento en productos para el hogar', '2024-06-20', '2024-06-30', 'Inicial', '[\"Friday\", \"Saturday\"]', 'aprobada', 24),
-(81, 'Promo de invierno: 2x1 en sopas', '2024-06-24', '2024-07-05', 'Premium', '[\"Monday\", \"Tuesday\"]', 'aprobada', 25),
-(82, 'Descuento en pizzas grandes', '2024-06-01', '2024-06-15', 'Medium', '[\"Monday\", \"Wednesday\", \"Friday\"]', 'aprobada', 19),
-(83, 'Oferta en fragancias florales', '2024-06-05', '2024-06-20', 'Inicial', '[\"Tuesday\", \"Thursday\"]', 'aprobada', 20),
-(84, 'Liquidación de jeans de moda', '2024-06-10', '2024-06-25', 'Medium', '[\"Monday\", \"Wednesday\", \"Friday\"]', 'aprobada', 21),
-(85, 'Promo especial en postres italianos', '2024-06-15', '2024-06-30', 'Premium', '[\"Tuesday\", \"Thursday\"]', 'aprobada', 22),
-(86, 'Descuento en productos de limpieza', '2024-06-20', '2024-07-05', 'Inicial', '[\"Monday\", \"Wednesday\", \"Friday\"]', 'aprobada', 26),
-(87, 'Happy hour: 2x1 en tragos de autor', '2024-06-25', '2024-07-10', 'Medium', '[\"Thursday\", \"Saturday\"]', 'pendiente', 27),
-(88, 'Oferta en perfumes de verano', '2024-06-30', '2024-07-15', 'Premium', '[\"Tuesday\", \"Friday\"]', 'pendiente', 28),
-(89, 'Promo del día: empanadas + cerveza', '2024-07-05', '2024-07-20', 'Inicial', '[\"Monday\", \"Wednesday\", \"Friday\"]', 'pendiente', 19),
-(90, 'Descuento en vestidos de noche', '2024-07-10', '2024-07-25', 'Medium', '[\"Tuesday\", \"Thursday\", \"Saturday\"]', 'pendiente', 20),
-(91, 'Liquidación de fragancias masculinas', '2024-07-15', '2024-07-30', 'Premium', '[\"Monday\", \"Wednesday\", \"Friday\"]', 'pendiente', 21);
+(61, 'Descuento en empanadas', '2024-06-08', '2024-06-30', 'Premium', '[\"Lunes\", \"Martes\", \"Miércoles\", \"Jueves\", \"Viernes\", \"Sábado\", \"Domingo\"]', 'aprobada', 16),
+(63, 'Descuento en ropa', '2024-06-08', '2024-06-20', 'Inicial', '[\"Lunes\", \"Martes\", \"Miércoles\", \"Jueves\", \"Viernes\", \"Sábado\", \"Domingo\"]', 'aprobada', 14),
+(65, 'Descuento en fragancias', '2024-06-08', '2024-06-30', 'Medium', '[\"Lunes\", \"Martes\", \"Miércoles\", \"Jueves\", \"Viernes\", \"Sábado\", \"Domingo\"]', 'aprobada', 21),
+(66, 'Descuento en empanadas', '2024-06-08', '2024-06-30', 'Premium', '[\"Lunes\", \"Martes\", \"Miércoles\", \"Jueves\", \"Viernes\", \"Sábado\", \"Domingo\"]', 'aprobada', 12),
+(68, 'Descuento en ropa', '2024-06-08', '2024-06-20', 'Inicial', '[\"Lunes\", \"Martes\", \"Miércoles\", \"Jueves\", \"Viernes\", \"Sábado\", \"Domingo\"]', 'aprobada', 14),
+(69, '2x1 en pizzas', '2024-06-08', '2024-06-25', 'Premium', '[\"Lunes\", \"Martes\", \"Miércoles\", \"Jueves\", \"Viernes\", \"Sábado\", \"Domingo\"]', 'aprobada', 19),
+(70, 'Descuento en fragancias', '2024-06-08', '2024-06-30', 'Medium', '[\"Lunes\", \"Martes\", \"Miércoles\", \"Jueves\", \"Viernes\", \"Sábado\", \"Domingo\"]', 'aprobada', 21),
+(71, 'Descuento en indumentaria urbana', '2024-06-08', '2024-06-30', 'Premium', '[\"Lunes\", \"Martes\", \"Miércoles\", \"Jueves\", \"Viernes\", \"Sábado\", \"Domingo\"]', 'aprobada', 22),
+(72, 'Promo del día: hamburguesa + gaseosa', '2024-06-08', '2024-06-15', 'Medium', '[\"Lunes\", \"Martes\", \"Miércoles\", \"Jueves\", \"Viernes\", \"Sábado\", \"Domingo\"]', 'aprobada', 23),
+(73, 'Descuento en productos de hogar', '2024-06-08', '2024-06-20', 'Inicial', '[\"Lunes\", \"Martes\", \"Miércoles\", \"Jueves\", \"Viernes\", \"Sábado\", \"Domingo\"]', 'aprobada', 24),
+(74, 'Happy hour: 2x1 en tragos', '2024-06-08', '2024-06-25', 'Premium', '[\"Lunes\", \"Martes\", \"Miércoles\", \"Jueves\", \"Viernes\", \"Sábado\", \"Domingo\"]', 'aprobada', 25),
+(75, 'Promo especial en postres', '2024-06-08', '2024-06-30', 'Medium', '[\"Lunes\", \"Martes\", \"Miércoles\", \"Jueves\", \"Viernes\", \"Sábado\", \"Domingo\"]', 'aprobada', 26),
+(76, 'Descuento en hamburguesas gourmet', '2024-06-08', '2024-06-15', 'Inicial', '[\"Lunes\", \"Martes\", \"Miércoles\", \"Jueves\", \"Viernes\", \"Sábado\", \"Domingo\"]', 'aprobada', 27),
+(77, 'Oferta en perfumes importados', '2024-06-08', '2024-06-20', 'Premium', '[\"Lunes\", \"Martes\", \"Miércoles\", \"Jueves\", \"Viernes\", \"Sábado\", \"Domingo\"]', 'aprobada', 28),
+(79, 'Liquidación de temporada en ropa', '2024-06-08', '2024-06-25', 'Medium', '[\"Lunes\", \"Martes\", \"Miércoles\", \"Jueves\", \"Viernes\", \"Sábado\", \"Domingo\"]', 'aprobada', 23),
+(80, 'Descuento en productos para el hogar', '2024-06-08', '2024-06-30', 'Inicial', '[\"Lunes\", \"Martes\", \"Miércoles\", \"Jueves\", \"Viernes\", \"Sábado\", \"Domingo\"]', 'aprobada', 24),
+(81, 'Promo de invierno: 2x1 en sopas', '2024-06-08', '2024-07-05', 'Premium', '[\"Lunes\", \"Martes\", \"Miércoles\", \"Jueves\", \"Viernes\", \"Sábado\", \"Domingo\"]', 'aprobada', 25),
+(82, 'Descuento en pizzas grandes', '2024-06-08', '2024-06-15', 'Medium', '[\"Lunes\", \"Martes\", \"Miércoles\", \"Jueves\", \"Viernes\", \"Sábado\", \"Domingo\"]', 'aprobada', 19),
+(83, 'Oferta en fragancias florales', '2024-06-08', '2024-06-20', 'Inicial', '[\"Lunes\", \"Martes\", \"Miércoles\", \"Jueves\", \"Viernes\", \"Sábado\", \"Domingo\"]', 'aprobada', 20),
+(84, 'Liquidación de jeans de moda', '2024-06-08', '2024-06-25', 'Medium', '[\"Lunes\", \"Martes\", \"Miércoles\", \"Jueves\", \"Viernes\", \"Sábado\", \"Domingo\"]', 'aprobada', 21),
+(85, 'Promo especial en postres italianos', '2024-06-08', '2024-06-30', 'Premium', '[\"Lunes\", \"Martes\", \"Miércoles\", \"Jueves\", \"Viernes\", \"Sábado\", \"Domingo\"]', 'aprobada', 22),
+(86, 'Descuento en productos de limpieza', '2024-06-08', '2024-07-05', 'Inicial', '[\"Lunes\", \"Martes\", \"Miércoles\", \"Jueves\", \"Viernes\", \"Sábado\", \"Domingo\"]', 'aprobada', 26),
+(87, 'Happy hour: 2x1 en tragos de autor', '2024-06-08', '2024-07-10', 'Medium', '[\"Lunes\", \"Martes\", \"Miércoles\", \"Jueves\", \"Viernes\", \"Sábado\", \"Domingo\"]', 'pendiente', 27),
+(88, 'Oferta en perfumes de verano', '2024-06-08', '2024-07-15', 'Premium', '[\"Lunes\", \"Martes\", \"Miércoles\", \"Jueves\", \"Viernes\", \"Sábado\", \"Domingo\"]', 'pendiente', 28),
+(89, 'Promo del día: empanadas + cerveza', '2024-06-08', '2024-07-20', 'Inicial', '[\"Lunes\", \"Martes\", \"Miércoles\", \"Jueves\", \"Viernes\", \"Sábado\", \"Domingo\"]', 'pendiente', 19),
+(90, 'Descuento en vestidos de noche', '2024-06-08', '2024-07-25', 'Medium', '[\"Lunes\", \"Martes\", \"Miércoles\", \"Jueves\", \"Viernes\", \"Sábado\", \"Domingo\"]', 'pendiente', 20),
+(91, 'Liquidación de fragancias masculinas', '2024-06-08', '2024-07-30', 'Premium', '[\"Lunes\", \"Martes\", \"Miércoles\", \"Jueves\", \"Viernes\", \"Sábado\", \"Domingo\"]', 'aprobada', 21),
+(92, 'Descuento empanadas 2', '2024-06-08', '2024-06-30', 'Premium', '[\"Lunes\",\"Martes\",\"Jueves\",\"Viernes\"]', 'aprobada', 16),
+(93, 'Descuento en ropa 2', '2024-06-08', '2024-06-20', 'Inicial', '[\"Lunes\", \"Martes\", \"Miércoles\", \"Jueves\", \"Viernes\", \"Sábado\", \"Domingo\"]', 'aprobada', 14);
 
 -- --------------------------------------------------------
 
@@ -151,6 +149,14 @@ CREATE TABLE `usos_promociones` (
   `fechaUsoPromo` date NOT NULL,
   `estado` enum('enviada','aceptada','rechazada') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `usos_promociones`
+--
+
+INSERT INTO `usos_promociones` (`codCliente`, `codPromo`, `fechaUsoPromo`, `estado`) VALUES
+(11, 61, '2024-06-04', 'aceptada'),
+(11, 92, '2024-06-04', 'aceptada');
 
 -- --------------------------------------------------------
 
@@ -180,17 +186,16 @@ INSERT INTO `usuarios` (`codUsuario`, `nombreUsuario`, `claveUsuario`, `tipoUsua
 (22, 'tomclientetoken@gmail.com', '123', 'cliente', 'Inicial', NULL),
 (41, 'tomadmin@gmail.com', '123', 'administrador', '', NULL),
 (50, 'tomprue@gmail.com', '123', 'cliente', 'Inicial', '2c4xkz'),
-(52, 'tomaspinolini2003@gmail.com', '123', 'cliente', 'Inicial', NULL),
+(52, 'tomaspinolini2003@gmail.com', '321', 'cliente', 'Inicial', NULL),
 (53, 'alice.smith@example.com', 'pass123', 'cliente', 'Inicial', NULL),
 (54, 'bob.jones@example.com', 'pass123', 'cliente', 'Medium', NULL),
 (55, 'carol.wilson@example.com', 'pass123', 'cliente', 'Premium', NULL),
 (56, 'dave.brown@example.com', 'pass123', 'dueno de local', '', NULL),
 (57, 'eve.davis@example.com', 'pass123', 'dueno de local', '', NULL),
 (58, 'frank.miller@example.com', 'pass123', 'dueno de local', '', NULL),
-(59, 'grace.moore@example.com', 'pass123', 'administrador', '', NULL),
-(60, 'harry.taylor@example.com', 'pass123', 'administrador', '', NULL),
 (61, 'irene.anderson@example.com', 'pass123', 'cliente', 'Inicial', NULL),
-(62, 'jack.thomas@example.com', 'pass123', 'cliente', 'Medium', NULL);
+(62, 'jack.thomas@example.com', 'pass123', 'cliente', 'Medium', NULL),
+(63, 'lupinolini@gmail.com', '233', 'cliente', 'Inicial', 'R966tG');
 
 --
 -- Indexes for dumped tables
@@ -252,13 +257,13 @@ ALTER TABLE `novedades`
 -- AUTO_INCREMENT for table `promociones`
 --
 ALTER TABLE `promociones`
-  MODIFY `codPromo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=92;
+  MODIFY `codPromo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=94;
 
 --
 -- AUTO_INCREMENT for table `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `codUsuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
+  MODIFY `codUsuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
 
 --
 -- Constraints for dumped tables
