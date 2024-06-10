@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 09, 2024 at 06:39 PM
+-- Generation Time: Jun 10, 2024 at 04:15 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -180,7 +180,7 @@ INSERT INTO `usuarios` (`codUsuario`, `nombreUsuario`, `claveUsuario`, `tipoUsua
 (19, 'tomduenito@gmail.com', '123', 'dueno de local', '', NULL),
 (20, 'tomduenaso@gmail.com', '123', 'dueno de local', '', NULL),
 (21, 'tomduenotoken@gmail.com', '123', 'dueno de local', '', NULL),
-(41, 'tomadmin@gmail.com', '123', 'administrador', '', NULL),
+(41, 'tomaspinolini03@gmail.com', '123', 'administrador', '', NULL),
 (56, 'dave.brown@example.com', 'pass123', 'dueno de local', '', NULL),
 (57, 'eve.davis@example.com', 'pass123', 'dueno de local', '', NULL),
 (58, 'frank.miller@example.com', 'pass123', 'dueno de local', '', NULL),
