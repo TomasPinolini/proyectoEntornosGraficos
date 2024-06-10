@@ -1,5 +1,5 @@
 <?php 
-  include("db.php"); 
+  include("../db.php"); 
   session_start();  
 ?>
 
@@ -11,10 +11,8 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>VISUALIZACION DE TODAS LAS PROMOS UsNoreg</h1>
+    <h1>VISUALIZACION DE TODAS LAS PROMOS</h1>
     <br>
-    <div>
-    <button onclick="window.location.href='usuarioNoRegistrado.php'">Menu Usuario no Registrado</button>
-    </div>
+    <button onclick="window.location.href='../usuarioNoRegistrado.php'">Menu Usuario no Registrado</button>
 </body>
 </html>

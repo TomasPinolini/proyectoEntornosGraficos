@@ -135,7 +135,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <title>Index</title>
 </head>
 <body>
-    <img src="UTN_logo.png" alt="" class="logoutn">
+    <img src="UTN_logo_i.png" alt="" class="logoutn">
     <div class="cont">
         <div class="form sign-in">
             <h2>Bienvenido!</h2>
@@ -155,6 +155,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     <input type="password" name="password" required />
                 </label>
                 <p class="forgot-pass"><a href="reset_pass1.php">Olvido su contraseña?</a></p>
+                <p class="no_acc"><a href="usuarioNoRegistrado.php">Ingresar sin cuenta</a></p>
                 <input type="submit" name="login" class="submit" value="Sign In">
             </form>
         </div>

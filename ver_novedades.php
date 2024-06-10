@@ -7,7 +7,7 @@
   } 
   $fechahoy = date("Y-m-d");
   $novedades = mysqli_query($mysqli, "SELECT * FROM novedades WHERE tipoUsuario = '$type'");
-  ?>
+?>
 
 <!DOCTYPE html>
 <html lang="en">

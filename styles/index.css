@@ -12,7 +12,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh; /* Ensure the body takes the full viewport height */
+    height: 100vh; 
     margin: 0; 
 }
 
@@ -269,6 +269,13 @@ input {
     color: #cfcfcf;
 }
 
+.no_acc {
+    margin-top: 15px;
+    text-align: center;
+    font-size: 12px;
+    color: #cfcfcf;
+}
+
 .submit {
     margin-top: 40px;
     margin-bottom: 20px;
@@ -324,7 +331,7 @@ input {
     color: #333;
     font-size: 16px;
     font-family: Arial, sans-serif;
-    appearance: none; /* Remove default arrow in some browsers */
+    appearance: none; 
     -webkit-appearance: none;
     -moz-appearance: none;
     background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="%23333" d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41zM12 15l-6-6h12z"/></svg>'); /* Custom arrow icon */
@@ -333,17 +340,14 @@ input {
     cursor: pointer;
 }
 
-/* Style for the arrow icon in the select */
 .form select::-ms-expand {
-    display: none; /* Hide default arrow in IE 10+ */
+    display: none; 
 }
 
-/* Hover style for the select */
 .form select:hover {
     border-color: #aaa;
 }
 
-/* Focus style for the select */
 .form select:focus {
     border-color: #555;
     outline: none;
@@ -357,14 +361,14 @@ input {
 .form input[type="submit"] {
     background-color: #4CAF50;
     color: white;
-    padding: 10px 20px; /* Adjust padding for button size */
+    padding: 10px 20px; 
     border: none;
-    border-radius: 20px; /* Add border radius for rounded corners */
+    border-radius: 20px;
     cursor: pointer;
-    width: auto; /* Set width to auto for dynamic button width */
-    display: inline-block; /* Make button inline-block for dynamic width */
-    text-align: center; /* Center button text */
-    text-decoration: none; /* Remove underline on button text */
+    width: auto; 
+    display: inline-block;
+    text-align: center; 
+    text-decoration: none; 
     transition: all 0.3s ease-in-out;
 
 }
@@ -375,5 +379,5 @@ input {
 }
 
 .form input[type="submit"]:focus {
-    outline: none; /* Remove outline on focus */
+    outline: none; 
 }
