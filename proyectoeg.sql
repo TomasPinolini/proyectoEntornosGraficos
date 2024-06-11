@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 10, 2024 at 04:15 PM
+-- Generation Time: Jun 11, 2024 at 02:46 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -176,12 +176,12 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`codUsuario`, `nombreUsuario`, `claveUsuario`, `tipoUsuario`, `categoria_cliente`, `token_activation`) VALUES
-(10, 'tomdueno@gmail.com', '123', 'dueno de local', '', NULL),
+(10, 'tomdueno@gmail.com', '123', 'dueno de local', '', 'no'),
 (19, 'tomduenito@gmail.com', '123', 'dueno de local', '', NULL),
 (20, 'tomduenaso@gmail.com', '123', 'dueno de local', '', NULL),
 (21, 'tomduenotoken@gmail.com', '123', 'dueno de local', '', NULL),
 (41, 'tomaspinolini03@gmail.com', '123', 'administrador', '', NULL),
-(56, 'dave.brown@example.com', 'pass123', 'dueno de local', '', NULL),
+(56, 'dave.brown@example.com', 'pass123', 'dueno de local', '', 'vovoooo'),
 (57, 'eve.davis@example.com', 'pass123', 'dueno de local', '', NULL),
 (58, 'frank.miller@example.com', 'pass123', 'dueno de local', '', NULL),
 (67, 'tomaspinolini2003@gmail.com', '123', 'cliente', 'Premium', NULL);
@@ -275,7 +275,7 @@ ALTER TABLE `promociones`
 --
 ALTER TABLE `usos_promociones`
   ADD CONSTRAINT `usos_promociones_ibfk_1` FOREIGN KEY (`codCliente`) REFERENCES `usuarios` (`codUsuario`) ON DELETE CASCADE,
-  ADD CONSTRAINT `usos_promociones_ibfk_2` FOREIGN KEY (`codPromo`) REFERENCES `promociones` (`codPromo`);
+  ADD CONSTRAINT `usos_promociones_ibfk_2` FOREIGN KEY (`codPromo`) REFERENCES `promociones` (`codPromo`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

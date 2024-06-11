@@ -8,6 +8,7 @@ function generadorToken() {
     return $token;
 }
 $login_invalid = false;
+$dueno_no_ap = false;
 $validated = true;
 $error_message = '';
 $registration_error = '';
@@ -26,6 +27,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         
         if ($result && $result->num_rows > 0) {
             $user = $result->fetch_assoc();
+            if ($user["tipoUsuario"] === 'dueno de local' && $user["token_activation"] !== null) {
+                $dueno_no_ap = true;
+            }
             if ($postpassword === $user["claveUsuario"] && $user["token_activation"] === null) {
                 $_SESSION = $user;
                 switch ($user["tipoUsuario"]) {
@@ -40,12 +44,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                         break;
                 }
                 exit;
-            } elseif ($user["token_activation"] !== null) {
+            } elseif ($user["tipoUsuario"] === 'cliente' && $user["token_activation"] !== null) {
                 $validated = false;
                 $error_message = "Confirme el registro antes de ingresar.";
-            } else {
-                $login_invalid = true;
-                $error_message = "Usuario o contraseña incorrecto, intente de nuevo.";
             }
         } else {
             $login_invalid = true;
@@ -102,6 +103,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             }
         } else {
             $type = 'dueno de local';
+            $activation_token = "notodavia";
         }
 
         $stmt->bind_param("sssss", $email, $password, $type, $typeCli, $activation_token);
@@ -141,6 +143,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             <h2>Bienvenido!</h2>
             <?php if ($login_invalid): ?>
                 <br><em><?php echo $error_message; ?></em><br>
+            <?php endif ?>
+            <?php if ($dueno_no_ap): ?>
+                <br><em>El administrador todavía no aprobo su cuenta.</em><br>
             <?php endif ?>
             <?php if (!$validated): ?>
                 <br><em>Confirme el registro antes de ingresar.</em><br>
